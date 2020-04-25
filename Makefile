@@ -4,7 +4,7 @@ include .env
 export  $(shell sed 's/=.*//' .env)
 
 install: ## Service Install Dependencies
-	docker run -it \
+	docker run -it --rm \
 	--name=sheldon-web-service \
 	-v ${PWD}:/var/app \
 	-w /var/app \
@@ -12,7 +12,7 @@ install: ## Service Install Dependencies
 	npm install
 
 compile: ## Service Compile To Production
-	docker run -it \
+	docker run -it --rm \
 	--name=sheldon-web-service \
 	-v ${PWD}:/var/app \
 	-w /var/app \
@@ -36,6 +36,8 @@ up-dev: ## Run Container Development
 	-w /var/app \
 	node:latest \
 	npm run dev
+
+deploy: compile up ## Deploy Container Production
 
 down: ## Down Container
 	docker stop sheldon-web
