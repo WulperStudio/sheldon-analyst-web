@@ -28,7 +28,16 @@ up: ## Run Container Production
 	node:latest \
 	npm run start
 
-up-dev: ## Run Container Development
+up-dev: ## Run Container Development (daemon)
+	docker run -d --rm \
+	--name=sheldon-web \
+	-p 3000:3000 \
+	-v ${PWD}:/var/app \
+	-w /var/app \
+	node:latest \
+	npm run dev
+
+up-it-dev: ## Run Container Development (iterative)
 	docker run -it --rm \
 	--name=sheldon-web \
 	-p 3000:3000 \
