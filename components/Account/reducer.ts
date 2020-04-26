@@ -8,6 +8,9 @@ import {
   SUBMIT_FORM_UPDATE,
   SUCCESS_UPDATE,
   FAIL_UPDATE,
+  SUBMIT_FORM_VALIDATE,
+  SUCCESS_VALIDATE,
+  FAIL_VALIDATE,
   StatusAccount,
   ActionAccount,
 } from "./type";
@@ -23,14 +26,17 @@ export const AccountReducer = (
   action: ActionAccount
 ): StatusAccount => {
   switch (action.type) {
+    case SUBMIT_FORM_VALIDATE:
     case SUBMIT_FORM_UPDATE:
     case SUBMIT_FORM_RECOVER:
     case SUBMIT_FORM_REGISTER:
       return { loading: true, done: false, fail: false };
+    case SUCCESS_VALIDATE:
     case SUCCESS_UPDATE:
     case SUCCESS_RECOVER:
     case SUCCESS_REGISTER:
       return { loading: false, done: true, fail: false };
+    case FAIL_VALIDATE:
     case FAIL_UPDATE:
     case FAIL_RECOVER:
     case FAIL_REGISTER:

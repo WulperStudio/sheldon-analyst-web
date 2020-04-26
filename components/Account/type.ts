@@ -67,6 +67,25 @@ interface EventFailUpdate {
 }
 
 /**
+ * Validate Account
+ */
+export const SUBMIT_FORM_VALIDATE = "SUBMIT_FORM_VALIDATE";
+export const SUCCESS_VALIDATE = "SUCCESS_VALIDATE";
+export const FAIL_VALIDATE = "FAIL_VALIDATE";
+
+interface EventSubmitValidate {
+  type: typeof SUBMIT_FORM_VALIDATE;
+}
+
+interface EventSuccessValidate {
+  type: typeof SUCCESS_VALIDATE;
+}
+
+interface EventFailValidate {
+  type: typeof FAIL_VALIDATE;
+}
+
+/**
  * General Status
  */
 
@@ -85,7 +104,10 @@ export type ActionAccount =
   | EventFailRecover
   | EventSubmitUpdate
   | EventSuccessUpdate
-  | EventFailUpdate;
+  | EventFailUpdate
+  | EventSubmitValidate
+  | EventSuccessValidate
+  | EventFailValidate;
 
 export interface RxStatusAccount {
   AccountReducer: StatusAccount;

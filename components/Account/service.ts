@@ -1,8 +1,7 @@
 import axios from "axios";
 import { RegisterUser } from "./type";
 
-// const API = "http://192.81.211.252:7070";
-const API = "http://localhost:7070";
+const API = process.env.API || "http://localhost:7070";
 
 export const RegisterUserService = async (
   form: RegisterUser
@@ -22,4 +21,8 @@ export const PasswordService = async (
     token: token,
     password: password,
   });
+};
+
+export const ValidAccountService = async (token: string): Promise<void> => {
+  await axios.get<{}>(`${API}/valid_email/${token}`);
 };

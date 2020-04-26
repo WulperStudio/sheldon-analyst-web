@@ -1,2 +1,2 @@
-export { Register, Recover, Update } from "./components";
+export { Register, Recover, Update, Validate } from "./components";
 export { AccountReducer } from "./reducer";

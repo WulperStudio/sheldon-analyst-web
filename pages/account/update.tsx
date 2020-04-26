@@ -1,7 +1,7 @@
 import React from "react";
 
 import LayoutGeneric from "../../layout/generic";
-import { Update } from "../../components/Account";
+import { Update } from "../../components";
 
 const UpdatePage: React.FunctionComponent<{}> = () => {
   return (

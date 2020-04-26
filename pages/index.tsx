@@ -2,14 +2,17 @@ import React from "react";
 import { connect, ConnectedProps } from "react-redux";
 import { Button } from "antd";
 
-import LayoutGeneric from "../layout/generic";
+import LayoutGeneric, { ContextNavTags } from "../layout/generic";
 
 import {
+  Login,
   logoutSession,
   RxStatusLoginSession,
   SuccessSession,
   isActiveSession,
-} from "../components/Login";
+  Register,
+  Recover,
+} from "../components";
 
 const mapDispatch = (dispatch: Function) => {
   return {
@@ -43,6 +46,9 @@ const Home: React.FunctionComponent<Props> = (props) => {
       {props.token == null ? (
         <>
           <h1>Welcome to Sheldon Company.!</h1>
+          <br />
+          <br />
+          <ShowAccountComponent />
         </>
       ) : (
         <>
@@ -55,6 +61,23 @@ const Home: React.FunctionComponent<Props> = (props) => {
         </>
       )}
     </LayoutGeneric>
+  );
+};
+
+const ShowAccountComponent: React.FunctionComponent<{}> = () => {
+  const context = React.useContext(ContextNavTags);
+  return (
+    <>
+      {context !== undefined ? (
+        context === "login" ? (
+          <Login />
+        ) : context === "register" ? (
+          <Register />
+        ) : context === "recover" ? (
+          <Recover />
+        ) : null
+      ) : null}
+    </>
   );
 };
 

@@ -8,6 +8,9 @@ import {
   SUBMIT_FORM_UPDATE,
   SUCCESS_UPDATE,
   FAIL_UPDATE,
+  SUBMIT_FORM_VALIDATE,
+  SUCCESS_VALIDATE,
+  FAIL_VALIDATE,
   RegisterUser,
   ActionAccount,
 } from "./type";
@@ -15,6 +18,7 @@ import {
   RegisterUserService,
   RecoverService,
   PasswordService,
+  ValidAccountService,
 } from "./service";
 
 export type dispatchRegister = (_: ActionAccount) => void;
@@ -108,4 +112,34 @@ const successUpdate = (): ActionAccount => ({
 
 const failUpdate = (): ActionAccount => ({
   type: FAIL_UPDATE,
+});
+
+/**
+ * Valid Account
+ * @param token
+ */
+
+export const submitFormValidate = (token: string) => {
+  return (dispatch: dispatchRegister) => {
+    dispatch(submitValidate());
+    ValidAccountService(token)
+      .then(() => {
+        dispatch(successValidate());
+      })
+      .catch(() => {
+        dispatch(failValidate());
+      });
+  };
+};
+
+const submitValidate = (): ActionAccount => ({
+  type: SUBMIT_FORM_VALIDATE,
+});
+
+const successValidate = (): ActionAccount => ({
+  type: SUCCESS_VALIDATE,
+});
+
+const failValidate = (): ActionAccount => ({
+  type: FAIL_VALIDATE,
 });
