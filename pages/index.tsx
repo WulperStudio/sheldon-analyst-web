@@ -4,8 +4,6 @@ import { Button } from "antd";
 
 import LayoutGeneric from "../layout/generic";
 
-import { NameClient } from "./style";
-
 import {
   logoutSession,
   RxStatusLoginSession,
@@ -49,7 +47,7 @@ const Home: React.FunctionComponent<Props> = (props) => {
       ) : (
         <>
           <h1>
-            Hi, dear <NameClient>{props.name}</NameClient>
+            Hi, dear <span className="name-client">{props.name}</span>
           </h1>
           <Button onClick={() => props.Logout(props.token || "")}>
             LogOut

@@ -22,3 +22,8 @@
   text-align: center;
   color: red;
 }
+
+.name-client {
+  text-transform: capitalize;
+  font-weight: bold;
+}
