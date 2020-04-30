@@ -5,7 +5,7 @@ export  $(shell sed 's/=.*//' .env)
 
 install: ## Service Install Dependencies
 	docker run -it --rm \
-	--name=sheldon-web-service \
+	--name=${PROJECT_NAME}-service \
 	-v ${PWD}:/var/app \
 	-w /var/app \
 	node:latest \
@@ -13,7 +13,7 @@ install: ## Service Install Dependencies
 
 compile: ## Service Compile To Production
 	docker run -it --rm \
-	--name=sheldon-web-service \
+	--name=${PROJECT_NAME}-service \
 	-v ${PWD}:/var/app \
 	-w /var/app \
 	node:latest \
@@ -21,8 +21,8 @@ compile: ## Service Compile To Production
 
 up: ## Run Container Production
 	docker run -d --rm \
-	--name=sheldon-web \
-	-p 3000:3000 \
+	--name=${PROJECT_NAME} \
+	-p 3001:3000 \
 	-v ${PWD}:/var/app \
 	-w /var/app \
 	node:latest \
@@ -30,8 +30,8 @@ up: ## Run Container Production
 
 up-dev: ## Run Container Development (daemon)
 	docker run -d --rm \
-	--name=sheldon-web \
-	-p 3000:3000 \
+	--name=${PROJECT_NAME} \
+	-p 3001:3000 \
 	-v ${PWD}:/var/app \
 	-w /var/app \
 	node:latest \
@@ -39,8 +39,8 @@ up-dev: ## Run Container Development (daemon)
 
 up-it-dev: ## Run Container Development (iterative)
 	docker run -it --rm \
-	--name=sheldon-web \
-	-p 3000:3000 \
+	--name=${PROJECT_NAME} \
+	-p 3001:3000 \
 	-v ${PWD}:/var/app \
 	-w /var/app \
 	node:latest \
