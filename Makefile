@@ -25,6 +25,7 @@ up: ## Run Container Production
 	-p 3001:3000 \
 	-v ${PWD}:/var/app \
 	-w /var/app \
+	--env-file=${PWD}/.env \
 	node:latest \
 	npm run start
 
@@ -34,6 +35,7 @@ up-dev: ## Run Container Development (daemon)
 	-p 3001:3000 \
 	-v ${PWD}:/var/app \
 	-w /var/app \
+	--env-file=${PWD}/.env \
 	node:latest \
 	npm run dev
 
@@ -43,6 +45,7 @@ up-it-dev: ## Run Container Development (iterative)
 	-p 3001:3000 \
 	-v ${PWD}:/var/app \
 	-w /var/app \
+	--env-file=${PWD}/.env \
 	node:latest \
 	npm run dev
 
