@@ -49,10 +49,10 @@ up-it-dev: ## Run Container Development (iterative)
 deploy: compile up ## Deploy Container Production
 
 down: ## Down Container
-	docker stop sheldon-web
+	docker stop ${PROJECT_NAME}
 
 logs: ## Show Logs Container
-	docker logs sheldon-web --details --follow --tail="all"
+	docker logs ${PROJECT_NAME} --details --follow --tail="all"
 
 help: ## Help Make's Tags
 	@printf "\033[31m%-22s %-59s %s\033[0m\n" "Target" " Help"; \
