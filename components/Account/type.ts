@@ -7,10 +7,11 @@ export const SUCCESS_REGISTER = "SUCCESS_REGISTER";
 export const FAIL_REGISTER = "FAIL_REGISTER";
 
 export interface RegisterUser {
-  name: string;
+  fullName: string;
+  nickname: string;
   email: string;
-  phone: string;
-  company: string;
+  privileges: number;
+  section: Array<string>;
   password: string;
 }
 

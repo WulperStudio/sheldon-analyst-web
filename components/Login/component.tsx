@@ -47,7 +47,10 @@ const Login: React.FunctionComponent<Props> = (props: Props) => {
     <div className="content-form-login">
       <h1>Login Sheldon Contacts</h1>
       {props.fail ? <small className="error-login">Login Error</small> : null}
-      <Form onFinish={(values) => props.session(values as FormLogIn)}>
+      <Form
+        initialValues={props}
+        onFinish={(values) => props.session(values as FormLogIn)}
+      >
         <Form.Item
           name="loginEmail"
           className="item-component"
@@ -62,7 +65,7 @@ const Login: React.FunctionComponent<Props> = (props: Props) => {
           rules={[{ required: true }]}
           label="Password"
         >
-          <Input.Password />
+          <Input.Password placeholder="password account" />
         </Form.Item>
         <Form.Item
           wrapperCol={{

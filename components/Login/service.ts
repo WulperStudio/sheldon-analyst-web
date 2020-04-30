@@ -2,8 +2,7 @@ import axios from "axios";
 import { AttributeResponse, FormLogIn, SuccessSession } from "./type";
 import { successLoginHidrate } from "./hidrate";
 
-// const API = "http://192.81.211.252:7070";
-const API = "http://localhost:7070";
+const API = process.env.API_ANALYST || "http://localhost:7080";
 
 export const LoginService = async (
   form: FormLogIn
@@ -16,15 +15,21 @@ export const LoginService = async (
 };
 
 export const AuthSession = async (token: string): Promise<SuccessSession> => {
-  const response = await axios.post<AttributeResponse>(`${API}/authorization`, {
-    token: token,
-  });
+  const response = await axios.post<AttributeResponse>(
+    `${API}/auth`,
+    {},
+    {
+      headers: {
+        Authorization: token,
+      },
+    }
+  );
   return successLoginHidrate(response);
 };
 
 export const LogOutSession = async (token: string): Promise<void> => {
   await axios.post<{}>(
-    `${API}/logout`,
+    `${API}/logout_user`,
     {},
     {
       headers: {

@@ -8,19 +8,17 @@ import {
 } from "./type";
 
 export const initialState = (): StatusLoginSession => ({
-  loginEmail: "",
-  loginPassword: "",
+  loginEmail: "admin@imsheldon.com",
+  loginPassword: "eba259b8-83f4-11ea-bd99-0242ac13000e",
   id: "",
+  fullName: "",
+  nickname: "",
   email: "",
-  phone: "",
-  valid: false,
-  authAdmin: false,
-  created: "",
-  token: null,
-  name: "",
-  domain: "",
   privileges: 0,
-  company: "",
+  section: [],
+  token: null,
+  updated: "",
+  created: "",
   loading: false,
   fail: false,
 });

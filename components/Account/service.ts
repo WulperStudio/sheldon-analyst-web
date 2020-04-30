@@ -1,7 +1,7 @@
 import axios from "axios";
 import { RegisterUser } from "./type";
 
-const API = process.env.API || "http://localhost:7070";
+const API = process.env.API_ANALYST;
 
 export const RegisterUserService = async (
   form: RegisterUser

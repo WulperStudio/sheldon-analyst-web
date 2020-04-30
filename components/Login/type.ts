@@ -11,16 +11,14 @@ export const SUCCESS_SESSION = "SUCCESS_SESSION";
 
 export interface SuccessSession {
   id: string;
+  fullName: string;
+  nickname: string;
   email: string;
-  phone: string;
-  valid: boolean;
-  authAdmin: boolean;
-  created: string;
-  token: string | null;
-  name: string;
-  domain: string;
   privileges: number;
-  company: string;
+  section: Array<string>;
+  token: string | null;
+  updated: string;
+  created: string;
 }
 
 export const FAIL_SESSION = "FAIL_SESSION";
@@ -51,7 +49,7 @@ interface EventLogOutSession {
 }
 
 interface SpecialAttribute {
-  auth_admin: boolean;
+  fullname: string;
 }
 
 export type AttributeResponse = {

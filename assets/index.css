@@ -27,3 +27,73 @@
   text-transform: capitalize;
   font-weight: bold;
 }
+
+/* FORM CLIENTS */
+
+.form-clients {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+}
+
+.form-clients .standard-item {
+  max-width: 344px;
+}
+
+.form-clients .standard-item .input-text {
+  width: 320px;
+  font-size: 16px;
+  padding: 8px 18px 8px 8px;
+}
+
+.form-clients .standard-item .input-text.input-text-with-icon input {
+  padding: 0 0 0 21px;
+}
+
+.form-clients .standard-item .ant-form-item-children-icon {
+  width: 20px;
+  top: 22px;
+  right: 24px;
+}
+
+.form-clients .standard-item .select-standard {
+  width: 320px;
+  font-size: 16px;
+}
+
+.form-clients .standard-item .select-standard .ant-select-selector {
+  height: 43px;
+  padding: 6px 0 0 0;
+}
+
+.form-clients .standard-item .select-standard-with-icon div.ant-select-selector {
+  padding: 6px 0 0 33px;
+}
+
+.form-clients .standard-item .select-multi {
+  width: 320px;
+  font-size: 16px;
+}
+
+.form-clients .standard-item .select-multi .ant-select-selector {
+  height: 43px;
+}
+
+.form-clients .standard-item .icon-select-standard {
+  position: absolute;
+  top: 9px;
+  left: 9px;
+  z-index: 1;
+}
+
+.form-clients .standard-item .icon-select-standard .ant-select-selector {
+  margin: 0 0 33px 0;
+}
+
+.form-clients .history-content .ant-steps-item-content {
+  width: calc(100% - 27px);
+}
+
+.form-clients .status-form-container .ant-steps-item-title {
+  font-size: 12px;
+}

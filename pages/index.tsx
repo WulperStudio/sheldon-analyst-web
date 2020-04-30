@@ -1,8 +1,9 @@
 import React from "react";
 import { connect, ConnectedProps } from "react-redux";
 import { Button } from "antd";
+import Link from "next/link";
 
-import LayoutGeneric, { ContextNavTags } from "../layout/generic";
+import LayoutGeneric from "../layout/generic";
 
 import {
   Login,
@@ -10,8 +11,6 @@ import {
   RxStatusLoginSession,
   SuccessSession,
   isActiveSession,
-  Register,
-  Recover,
 } from "../components";
 
 const mapDispatch = (dispatch: Function) => {
@@ -43,41 +42,28 @@ const Home: React.FunctionComponent<Props> = (props) => {
 
   return (
     <LayoutGeneric>
+      <h1>Welcome to Sheldon Analyst</h1>
+      <br />
+      <br />
       {props.token == null ? (
         <>
-          <h1>Welcome to Sheldon Company.!</h1>
-          <br />
-          <br />
-          <ShowAccountComponent />
+          <Login />
         </>
       ) : (
         <>
           <h1>
-            Hi, dear <span className="name-client">{props.name}</span>
+            Hi, dear <span className="name-client">{props.nickname}</span>
           </h1>
           <Button onClick={() => props.Logout(props.token || "")}>
             LogOut
           </Button>
+          <br />
+          <Link href="/form_client">
+            <a>Form Client</a>
+          </Link>
         </>
       )}
     </LayoutGeneric>
-  );
-};
-
-const ShowAccountComponent: React.FunctionComponent<{}> = () => {
-  const context = React.useContext(ContextNavTags);
-  return (
-    <>
-      {context !== undefined ? (
-        context === "login" ? (
-          <Login />
-        ) : context === "register" ? (
-          <Register />
-        ) : context === "recover" ? (
-          <Recover />
-        ) : null
-      ) : null}
-    </>
   );
 };
 

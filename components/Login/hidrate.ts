@@ -9,15 +9,13 @@ export const successLoginHidrate = (
   } = response;
   return {
     id: data.id,
+    fullName: data.fullname,
+    nickname: data.nickname,
     email: data.email,
-    phone: data.phone,
-    valid: data.valid,
-    authAdmin: data.auth_admin,
-    created: data.created,
-    token: data.token,
-    name: data.name,
-    domain: data.domain,
     privileges: data.privileges,
-    company: data.company,
+    section: data.section,
+    token: data.token,
+    updated: data.updated,
+    created: data.created,
   };
 };
