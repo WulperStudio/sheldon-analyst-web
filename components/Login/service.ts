@@ -2,7 +2,7 @@ import axios from "axios";
 import { AttributeResponse, FormLogIn, SuccessSession } from "./type";
 import { successLoginHidrate } from "./hidrate";
 
-const API = process.env.API_ANALYST || "http://localhost:7080";
+const API = process.env.API_ANALYST;
 
 export const LoginService = async (
   form: FormLogIn

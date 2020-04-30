@@ -45,7 +45,7 @@ const Login: React.FunctionComponent<Props> = (props: Props) => {
 
   return (
     <div className="content-form-login">
-      <h1>Login Sheldon Contacts</h1>
+      <h1>Login Sheldon Analyst</h1>
       {props.fail ? <small className="error-login">Login Error</small> : null}
       <Form
         initialValues={props}
