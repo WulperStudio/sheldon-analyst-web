@@ -8,6 +8,7 @@ install: ## Service Install Dependencies
 	--name=${PROJECT_NAME}-service \
 	-v ${PWD}:/var/app \
 	-w /var/app \
+	--env-file=${PWD}/.env \
 	node:latest \
 	npm install
 
@@ -16,6 +17,7 @@ compile: ## Service Compile To Production
 	--name=${PROJECT_NAME}-service \
 	-v ${PWD}:/var/app \
 	-w /var/app \
+	--env-file=${PWD}/.env \
 	node:latest \
 	npm run build
 

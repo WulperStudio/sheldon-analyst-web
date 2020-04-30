@@ -1,11 +1,12 @@
 const withCSS = require("@zeit/next-css");
 
+module.exports = withCSS({
+  cssLoaderOptions: {
+    url: false
+  }
+});
+
 module.exports = {
-  ...withCSS({
-    cssLoaderOptions: {
-      url: false
-    }
-  }),
   webpack(config) {
     config.module.rules.push({
       test: /\.(png|jpg|gif|svg|ico)$/,
