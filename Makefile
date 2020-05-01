@@ -13,7 +13,7 @@ install: ## Service Install Dependencies
 	npm install
 
 compile: ## Service Compile To Production
-	docker run -it --rm \
+	docker run -it \
 	--name=${PROJECT_NAME}-service \
 	-v ${PWD}:/var/app \
 	-w /var/app \
@@ -22,7 +22,7 @@ compile: ## Service Compile To Production
 	npm run build
 
 up: ## Run Container Production
-	docker run -d --rm \
+	docker run -d \
 	--name=${PROJECT_NAME} \
 	-p 3001:3000 \
 	-v ${PWD}:/var/app \
@@ -33,7 +33,7 @@ up: ## Run Container Production
 
 up-dev: ## Run Container Development (daemon)
 	docker run -d --rm \
-	--name=${PROJECT_NAME} \
+	--name=${PROJECT_NAME}-dev \
 	-p 3001:3000 \
 	-v ${PWD}:/var/app \
 	-w /var/app \
@@ -43,7 +43,7 @@ up-dev: ## Run Container Development (daemon)
 
 up-it-dev: ## Run Container Development (iterative)
 	docker run -it --rm \
-	--name=${PROJECT_NAME} \
+	--name=${PROJECT_NAME}-dev \
 	-p 3001:3000 \
 	-v ${PWD}:/var/app \
 	-w /var/app \
@@ -51,10 +51,11 @@ up-it-dev: ## Run Container Development (iterative)
 	node:latest \
 	npm run dev
 
-deploy: compile up ## Deploy Container Production
+deploy: ## Restart Container (deploy)
+	docker restart ${PROJECT_NAME}
 
 down: ## Down Container
-	docker stop ${PROJECT_NAME}
+	docker ps -q --filter ancestor="${PROJECT_NAME}" | xargs -r docker stop
 
 logs: ## Show Logs Container
 	docker logs ${PROJECT_NAME} --details --follow --tail="all"
