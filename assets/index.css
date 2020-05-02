@@ -1,8 +1,11 @@
+.ant-layout {
+  background-color: white;
+}
+
 .content-form-login {
   display: flex;
   flex-direction: column;
   width: 400px;
-  border: 1px solid #000;
   padding: 5px;
 }
 

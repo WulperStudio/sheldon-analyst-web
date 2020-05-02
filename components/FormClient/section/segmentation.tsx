@@ -13,25 +13,47 @@ const Segmentation: React.FunctionComponent<{}> = () => {
         <TitleSectionForm>Segmentation</TitleSectionForm>
       </Row>
       <Row>
-        <MultiSelect data={p} placeholder="Country & City" addTag={true} />
-        <MultiSelect data={p} placeholder="Tags & Interests" addTag={true} />
+        <MultiSelect
+          name="country"
+          data={p}
+          placeholder="Country & City"
+          addTag={true}
+        />
+        <MultiSelect
+          name="interests"
+          data={p}
+          placeholder="Tags & Interests"
+          addTag={true}
+        />
       </Row>
       <Row>
-        <MultiSelect data={p} placeholder="Sectors search" addTag={true} />
-        <MultiSelect data={p} placeholder="Area search" addTag={true} />
+        <MultiSelect
+          name="sector"
+          data={p}
+          placeholder="Sectors search"
+          addTag={true}
+        />
+        <MultiSelect name="" data={p} placeholder="Area search" addTag={true} />
       </Row>
       <Row>
-        <MultiSelect data={p} placeholder="Products & Services" addTag={true} />
-        <MultiSelect data={p} placeholder="Tags" addTag={true} />
+        <MultiSelect
+          name="services"
+          data={p}
+          placeholder="Products & Services"
+          addTag={true}
+        />
+        <MultiSelect name="tags" data={p} placeholder="Tags" addTag={true} />
       </Row>
       <Row>
         <SimpleSelect
+          name="age"
           data={p}
           placeholder="Age margins"
           addTag={false}
           AddIcon={TestSvg}
         />
         <SimpleSelect
+          name="sex"
           data={p}
           placeholder="Sex margins"
           addTag={false}
@@ -40,6 +62,7 @@ const Segmentation: React.FunctionComponent<{}> = () => {
       </Row>
       <Row>
         <SimpleSelect
+          name="nse"
           data={p}
           placeholder="NSE"
           addTag={false}

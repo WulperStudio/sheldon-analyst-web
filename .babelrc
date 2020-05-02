@@ -8,7 +8,8 @@
         "alias": {
           "@components": "./components",
           "@assets": "./assets",
-          "@graphql": "./graphql"
+          "@graphql": "./graphql",
+          "@helpers": "./helpers"
         }
       }
     ],

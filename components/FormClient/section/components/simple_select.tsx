@@ -1,13 +1,13 @@
 import React from "react";
 import { Form, Select } from "antd";
 import { v4 as uid } from "uuid";
-import { PlusSquareOutlined } from "@ant-design/icons";
+
+import { IconItem } from "../styled";
 
 const { Option } = Select;
 
-import { BtnSelectMultiple, IconItem } from "../styled";
-
 interface Props {
+  name: string;
   data: Array<string>;
   placeholder: string;
   label?: string;
@@ -19,14 +19,10 @@ const SimpleSelect: React.FunctionComponent<Props> = (props) => {
   return (
     <>
       <Form.Item
+        name={props.name}
         className="standard-item"
         label={props.label || props.placeholder}
       >
-        {props.addTag ? (
-          <BtnSelectMultiple title="Add new tag">
-            <PlusSquareOutlined />
-          </BtnSelectMultiple>
-        ) : null}
         {props.AddIcon ? (
           <IconItem className="icon-select-standard ant-input-prefix">
             <img src={props.AddIcon} />

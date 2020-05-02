@@ -1,5 +1,5 @@
 import React from "react";
-import { Form } from "antd";
+import { Form, Button, Input } from "antd";
 
 import { TitleFormGeneral, Content } from "./styled";
 
@@ -13,13 +13,24 @@ const FormClient: React.FunctionComponent<{}> = () => {
   return (
     <>
       <TitleFormGeneral>Clients Form</TitleFormGeneral>
-      <Form className="form-clients" style={{ width: "100%" }}>
+      <Form
+        className="form-clients"
+        style={{ width: "100%" }}
+        onFinish={(v) => console.log(v)}
+      >
         <Content>
           <StatusForm />
           <CompanyInfo />
           <DecisionMaker />
           <Segmentation />
           <History />
+          <br />
+          <br />
+          <Form.Item>
+            <Button type="primary" htmlType="submit">
+              Submit
+            </Button>
+          </Form.Item>
         </Content>
       </Form>
     </>

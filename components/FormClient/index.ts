@@ -1,3 +1,2 @@
-import FormClient from "./component";
-
-export { FormClient };
+export { FormClient } from "./section";
+export { FormClientReducer } from "./reducer";
