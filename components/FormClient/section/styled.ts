@@ -20,6 +20,7 @@ export const Row = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  position: relative;
 `;
 
 export const IconItem = styled.span`
@@ -52,6 +53,14 @@ export const HistoryContainer = styled.div`
 
 export const StatusFormContent = styled.div`
   margin: 20px 0;
+`;
+
+export const CloseDecisionMaker = styled.div`
+  position: absolute;
+  right: 27px;
+  top: 27px;
+  color: red;
+  cursor: pointer;
 `;
 
 /**

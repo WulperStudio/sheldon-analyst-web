@@ -1,31 +1,43 @@
 import React from "react";
+import { CloseSquareOutlined } from "@ant-design/icons";
 
 import SimpleInputText from "./components/simple_input_text";
 
-import { Row, TitleSectionForm } from "./styled";
+import { Row, TitleSectionForm, CloseDecisionMaker } from "./styled";
 import * as TestSvg from "@assets/test.svg";
 
-const DecisionMaker: React.FunctionComponent<{}> = () => {
+interface Props {
+  reference: number;
+  onClosing: Function;
+  isClosing: boolean;
+}
+
+const DecisionMaker: React.FunctionComponent<Props> = (props) => {
   return (
     <>
       <Row>
-        <TitleSectionForm>1st Decision Maker</TitleSectionForm>
+        <TitleSectionForm>{props.reference} Decision Maker</TitleSectionForm>
+        {props.isClosing ? (
+          <CloseDecisionMaker onClick={() => props.onClosing()}>
+            <CloseSquareOutlined />
+          </CloseDecisionMaker>
+        ) : null}
       </Row>
       <Row>
         <SimpleInputText
-          name="name"
+          name={`name_${props.reference}`}
           placeholder="Name & Lastname"
           AddIcon={TestSvg}
         />
         <SimpleInputText
-          name="cell_phone"
+          name={`cell_phone_${props.reference}`}
           placeholder="Mobile phone"
           AddIcon={TestSvg}
         />
       </Row>
       <Row>
         <SimpleInputText
-          name=""
+          name={`company_email_${props.reference}`}
           placeholder="Company email"
           AddIcon={TestSvg}
         />
@@ -33,11 +45,14 @@ const DecisionMaker: React.FunctionComponent<{}> = () => {
       </Row>
       <Row>
         <SimpleInputText
-          name="facebook"
+          name={`facebook_${props.reference}`}
           placeholder="Facebook"
           AddIcon={TestSvg}
         />
-        <SimpleInputText name="personal_linkedin" placeholder="Linkedin" />
+        <SimpleInputText
+          name={`personal_linkedin_${props.reference}`}
+          placeholder="Linkedin"
+        />
       </Row>
     </>
   );

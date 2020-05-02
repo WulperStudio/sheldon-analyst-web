@@ -1,5 +1,6 @@
 import React from "react";
-import { Form, Button, Input } from "antd";
+import { Form, Button } from "antd";
+import { PlusOutlined } from "@ant-design/icons";
 
 import { TitleFormGeneral, Content } from "./styled";
 
@@ -9,7 +10,20 @@ import DecisionMaker from "./decision_maker";
 import Segmentation from "./segmentation";
 import History from "./history";
 
+const removeDecision = (
+  decision: Array<number>,
+  value: number
+): Array<number> => {
+  const aux = [...decision];
+  const index = aux.indexOf(value);
+  if (index > -1) {
+    aux.splice(index, 1);
+  }
+  return aux;
+};
+
 const FormClient: React.FunctionComponent<{}> = () => {
+  const [decision, setDecision] = React.useState<Array<number>>([1]);
   return (
     <>
       <TitleFormGeneral>Clients Form</TitleFormGeneral>
@@ -21,7 +35,25 @@ const FormClient: React.FunctionComponent<{}> = () => {
         <Content>
           <StatusForm />
           <CompanyInfo />
-          <DecisionMaker />
+          {decision.map((item, index) => (
+            <DecisionMaker
+              key={item}
+              reference={index + 1}
+              isClosing={decision.length > 1}
+              onClosing={() => setDecision(removeDecision(decision, item))}
+            />
+          ))}
+          <Button
+            type="primary"
+            onClick={() =>
+              setDecision([...decision, decision[decision.length - 1] + 1])
+            }
+          >
+            <PlusOutlined />
+            Add Decision Maker
+          </Button>
+          <br />
+
           <Segmentation />
           <History />
           <br />
