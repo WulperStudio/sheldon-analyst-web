@@ -101,9 +101,23 @@ export const IconSpinLoadingOPG = styled.img`
   z-index: 1;
 `;
 
-export const ImageWebOPG = styled.img`
+export const Thumbnail = styled.div`
+  position: relative;
   width: 63px;
   height: 63px;
+  border-radius: 2px;
+  overflow: hidden;
+`;
+
+export const ImageWebOPG = styled.img`
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 `;
 
 export const WrapDescriptionOPG = styled.div`

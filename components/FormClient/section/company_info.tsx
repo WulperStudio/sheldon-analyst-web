@@ -11,7 +11,7 @@ import ShowOpenGraph from "./components/show_open_graph";
 
 import { Row, TitleSectionForm } from "./styled";
 import Loader from "@assets/loader.svg";
-import Picture from "@assets/picture.svg";
+import Broken from "@assets/broken.png";
 import { validateFieldUrl } from "../../../helpers/valid_form_client";
 
 const mapState = (state: RxStatusFormClient): OpenGraphModel => {
@@ -51,7 +51,7 @@ const CompanyInfo: React.FunctionComponent<Props> = (props) => {
           image={props.image}
           LoadIcon={Loader}
           isLoading={props.isLoading}
-          defaultImage={Picture}
+          defaultImage={Broken}
           nodata={props.nodata}
         />
       </Row>

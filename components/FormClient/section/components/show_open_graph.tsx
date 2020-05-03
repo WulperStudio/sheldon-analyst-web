@@ -6,6 +6,7 @@ import {
   OpenGraphShow,
   LoadingOpenGraph,
   IconSpinLoadingOPG,
+  Thumbnail,
   ImageWebOPG,
   WrapDescriptionOPG,
   TitleWebOPG,
@@ -42,7 +43,9 @@ const ShowOpenGraph: React.FunctionComponent<Props> = (props) => {
           </LoadingOpenGraph>
         ) : !props.nodata ? (
           <>
-            <ImageWebOPG src={image ? props.image : props.defaultImage} />
+            <Thumbnail>
+              <ImageWebOPG src={image ? props.image : props.defaultImage} />
+            </Thumbnail>
             <WrapDescriptionOPG>
               <TitleWebOPG>{props.title || ""}</TitleWebOPG>
               <DescriptionWebOPG>{props.desc || ""}</DescriptionWebOPG>
