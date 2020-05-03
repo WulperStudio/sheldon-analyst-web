@@ -41,6 +41,11 @@ export const BtnSelectMultiple = styled.div`
   font-size: 18px;
 `;
 
+export const ContentTwinsSelectMultiple = styled.div`
+  display: flex;
+  width: 344px;
+`;
+
 export const HistoryContainer = styled.div`
   width: 375px;
   height: 400px;

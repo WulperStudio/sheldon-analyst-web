@@ -40,6 +40,7 @@
 }
 
 .form-clients .standard-item {
+  position: relative;
   max-width: 344px;
 }
 
@@ -66,7 +67,7 @@
 
 .form-clients .standard-item .select-standard .ant-select-selector {
   height: 43px;
-  padding: 6px 0 0 0;
+  padding: 6px 0 0 9px;
 }
 
 .form-clients .standard-item .select-standard-with-icon div.ant-select-selector {
@@ -79,7 +80,7 @@
 }
 
 .form-clients .standard-item .select-multi .ant-select-selector {
-  height: 43px;
+  min-height: 43px;
 }
 
 .form-clients .standard-item .icon-select-standard {
@@ -99,4 +100,32 @@
 
 .form-clients .status-form-container .ant-steps-item-title {
   font-size: 12px;
+}
+
+  /* TWINS */
+
+.form-clients .standard-item.twins-first {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-clients .standard-item.twins-first .ant-form-item-label {
+  text-align: start;
+}
+
+.form-clients .standard-item.twins-first .select-multi {
+  width: 155px;
+  margin: 0 10px 0 0;
+}
+
+.form-clients .standard-item.twins-last {
+  margin-top: 32px;
+}
+
+.form-clients .standard-item.twins-last .ant-form-item-label {
+  display: none;
+}
+
+.form-clients .standard-item.twins-last .select-multi {
+  width: 155px;
 }

@@ -11,6 +11,7 @@ interface Props {
   label?: string;
   addTag: boolean;
   required?: boolean;
+  twins?: 1 | 2 | undefined;
 }
 
 const MultiSelect: React.FunctionComponent<Props> = (props) => {
@@ -18,7 +19,9 @@ const MultiSelect: React.FunctionComponent<Props> = (props) => {
     <>
       <Form.Item
         name={props.name}
-        className="standard-item"
+        className={`standard-item ${props.twins === 1 ? "twins-first" : ""} ${
+          props.twins === 2 ? "twins-last" : ""
+        }`}
         label={props.label || props.placeholder}
         rules={[
           {

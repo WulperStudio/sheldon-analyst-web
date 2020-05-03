@@ -2,8 +2,7 @@ import React from "react";
 
 import MultiSelect from "./components/multi_select";
 import SimpleSelect from "./components/simple_select";
-import { Row, TitleSectionForm } from "./styled";
-import * as TestSvg from "@assets/test.svg";
+import { Row, TitleSectionForm, ContentTwinsSelectMultiple } from "./styled";
 
 const Segmentation: React.FunctionComponent<{}> = () => {
   const p = ["h0", "h1", "h2", "h3", "h4", "h5", "h6", "h7", "h8", "h9"];
@@ -33,7 +32,24 @@ const Segmentation: React.FunctionComponent<{}> = () => {
           placeholder="Sectors search"
           addTag={true}
         />
-        <MultiSelect name="" data={p} placeholder="Area search" addTag={true} />
+        <ContentTwinsSelectMultiple>
+          <MultiSelect
+            name="area"
+            data={p}
+            label="Area & Position"
+            placeholder="Area"
+            addTag={true}
+            twins={1}
+          />
+          <MultiSelect
+            name="position"
+            data={p}
+            placeholder="Position"
+            label=""
+            addTag={true}
+            twins={2}
+          />
+        </ContentTwinsSelectMultiple>
       </Row>
       <Row>
         <MultiSelect
@@ -42,32 +58,7 @@ const Segmentation: React.FunctionComponent<{}> = () => {
           placeholder="Products & Services"
           addTag={true}
         />
-        <MultiSelect name="tags" data={p} placeholder="Tags" addTag={true} />
-      </Row>
-      <Row>
-        <SimpleSelect
-          name="age"
-          data={p}
-          placeholder="Age margins"
-          addTag={false}
-          AddIcon={TestSvg}
-        />
-        <SimpleSelect
-          name="sex"
-          data={p}
-          placeholder="Sex margins"
-          addTag={false}
-          AddIcon={TestSvg}
-        />
-      </Row>
-      <Row>
-        <SimpleSelect
-          name="nse"
-          data={p}
-          placeholder="NSE"
-          addTag={false}
-          AddIcon={TestSvg}
-        />
+        <SimpleSelect name="nse" data={p} placeholder="NSE" addTag={false} />
       </Row>
     </>
   );

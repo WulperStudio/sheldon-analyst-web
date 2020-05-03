@@ -23,11 +23,11 @@ const SimpleSelect: React.FunctionComponent<Props> = (props) => {
         className="standard-item"
         label={props.label || props.placeholder}
       >
-        {props.AddIcon ? (
+        {/* {props.AddIcon ? (
           <IconItem className="icon-select-standard ant-input-prefix">
             <img src={props.AddIcon} />
           </IconItem>
-        ) : null}
+        ) : null} */}
         <Select
           className={`select-standard ${
             props.AddIcon ? "select-standard-with-icon" : ""

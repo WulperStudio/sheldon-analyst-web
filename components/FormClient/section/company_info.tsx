@@ -10,7 +10,6 @@ import MultiSelect from "./components/multi_select";
 import ShowOpenGraph from "./components/show_open_graph";
 
 import { Row, TitleSectionForm } from "./styled";
-import * as TestSvg from "@assets/test.svg";
 import Loader from "@assets/loader.svg";
 import Picture from "@assets/picture.svg";
 import { validateFieldUrl } from "../../../helpers/valid_form_client";
@@ -43,7 +42,6 @@ const CompanyInfo: React.FunctionComponent<Props> = (props) => {
         <SimpleInputText
           name="company_name"
           placeholder="Company Name"
-          AddIcon={TestSvg}
           required={true}
         />
         <ShowOpenGraph
@@ -63,7 +61,6 @@ const CompanyInfo: React.FunctionComponent<Props> = (props) => {
           data={[]}
           placeholder="Company Size"
           addTag={false}
-          AddIcon={TestSvg}
         />
         <SimpleInputText
           name="company_site"
@@ -77,7 +74,6 @@ const CompanyInfo: React.FunctionComponent<Props> = (props) => {
         <SimpleInputText
           name="linkedin"
           placeholder="Linkedin"
-          AddIcon={TestSvg}
           validator={validateFieldUrl}
           required={true}
         />

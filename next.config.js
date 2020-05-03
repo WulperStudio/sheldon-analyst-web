@@ -7,6 +7,7 @@ module.exports = withCSS({
 });
 
 module.exports = {
+  distDir: 'build',
   webpack(config) {
     config.module.rules.push({
       test: /\.(png|jpg|gif|svg|ico)$/,

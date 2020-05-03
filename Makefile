@@ -13,7 +13,7 @@ install: ## Service Install Dependencies
 	npm install
 
 compile: ## Service Compile To Production
-	docker run -it \
+	docker run -it --rm \
 	--name=${PROJECT_NAME}-service \
 	-v ${PWD}:/var/app \
 	-w /var/app \
@@ -55,7 +55,7 @@ deploy: ## Restart Container (deploy)
 	docker restart ${PROJECT_NAME}
 
 down: ## Down Container
-	docker ps -q --filter ancestor="${PROJECT_NAME}" | xargs -r docker stop
+	docker ps -aq -f name=${PROJECT_NAME} -f status=running | xargs -r docker stop
 
 logs: ## Show Logs Container
 	docker logs ${PROJECT_NAME} --details --follow --tail="all"

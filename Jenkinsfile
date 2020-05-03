@@ -1,47 +1,57 @@
 pipeline {
     agent none
     stages {
-        stage('Compile Process') {
+        stage("Compile Process") {
             agent {
                 docker {
                     image "node:latest"
-                    args '-p 3000:3000'
+                    args "-p 3000:3000 --env-file=/var/jenkins_home/environment/${PIPELINE_NAME}/.env"
                 }
             }
             stages {
-                stage('install dependencies') {
+                stage("environment") {
                     steps {
-                        sh 'npm install'
-                        // sh 'cp -r /var/jenkins_home/workspace/node_modules /var/jenkins_home/workspace/server'
+                        sh "cp -f /var/jenkins_home/environment/${PIPELINE_NAME}/.env /var/jenkins_home/workspace/${PIPELINE_NAME}"
                     }
                 }
-                stage('build source') {
+                stage("install dependencies") {
                     steps {
-                        sh 'npm run build'
+                        script{
+                            if (PIPELINE_ENV == "dev") {
+                                sh "npm install"
+                            } else {
+                                sh "cp -f -r /var/jenkins_home/workspace/node_modules /var/jenkins_home/workspace/${PIPELINE_NAME}"
+                            }
+                        }
                     }
                 }
-                stage('replace') {
+                stage("build source") {
+                    steps {
+                        sh "npm run build"
+                    }
+                }
+                stage("replace static files") {
                     steps {
                         sh "rm -r /home/${PIPELINE_FOLDER_NAME}/*"
-                        sh "mv /var/jenkins_home/workspace/${PIPELINE_NAME}/* /home/${PIPELINE_FOLDER_NAME}"
+                        sh "cp -f -r /var/jenkins_home/workspace/${PIPELINE_NAME}/* /home/${PIPELINE_FOLDER_NAME}"
                     }
                 }
             }
         }
-        stage('Deploy Process') {
+        stage("Deploy Process") {
             agent any
             stages {
-                stage('environment') {
+                stage("environment") {
                     steps {
-                        sh "cp /var/jenkins_home/.env /home/${PIPELINE_FOLDER_NAME}"
+                        sh "cp -f /var/jenkins_home/environment/${PIPELINE_NAME}/.env /home/${PIPELINE_FOLDER_NAME}"
                     }
                 }
-                stage('stop service') {
+                stage("stop service") {
                     steps {
                         sh "make -C /home/${PIPELINE_FOLDER_NAME} down"
                     }
                 }
-                stage('start service') {
+                stage("start service") {
                     steps {
                         sh "make -C /home/${PIPELINE_FOLDER_NAME} deploy"
                     }
