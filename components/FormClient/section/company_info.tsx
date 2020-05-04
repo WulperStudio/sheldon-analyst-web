@@ -71,7 +71,7 @@ const CompanyInfo: React.FunctionComponent<Props> = (props) => {
           name="company_site"
           placeholder="Company Site"
           onBlurValue={(value) => props.getOpG(value)}
-          validator={validateFieldUrl}
+          validator={validateFieldUrl("Company Site")}
           required={true}
         />
       </Row>
@@ -79,7 +79,7 @@ const CompanyInfo: React.FunctionComponent<Props> = (props) => {
         <SimpleInputText
           name="linkedin"
           placeholder="Linkedin"
-          validator={validateFieldUrl}
+          validator={validateFieldUrl("Linkedin")}
           required={true}
         />
         <MultiSelect

@@ -1,6 +1,8 @@
 import React from "react";
 import { Form, Input } from "antd";
 
+import { RuleType } from "rc-field-form/lib/interface";
+
 import { IconItem } from "../styled";
 
 import {
@@ -17,6 +19,7 @@ interface Props {
   onBlurValue?: (_: string) => void;
   validator?: Validator;
   required?: boolean;
+  type?: RuleType;
 }
 
 const SimpleInputText: React.FunctionComponent<Props> = (props) => {
@@ -25,13 +28,14 @@ const SimpleInputText: React.FunctionComponent<Props> = (props) => {
       name={props.name}
       className="standard-item"
       label={props.label || props.placeholder}
-      hasFeedback={true}
       validateStatus={props.vdStatus}
       rules={[
         {
+          type: props.type || "string",
+        },
+        {
           required: props.required || false,
           whitespace: true,
-          message: "Please input passenger's name or delete this field.",
         },
         {
           validator: props.validator || defaultValidator,

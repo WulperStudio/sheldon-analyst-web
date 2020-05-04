@@ -1,6 +1,9 @@
 import React from "react";
+import { connect, ConnectedProps } from "react-redux";
 import { Form, Button } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
+
+import { loadCodeNum } from "../action";
 
 import { TitleFormGeneral, Content } from "./styled";
 
@@ -23,8 +26,62 @@ const removeDecision = (
   return aux;
 };
 
-const FormClient: React.FunctionComponent<{}> = () => {
+const mapDispatch = (dispatch: Function) => {
+  return {
+    loadCodeNumAct: () => {
+      dispatch(loadCodeNum());
+    },
+  };
+};
+
+const connector = connect(null, mapDispatch);
+
+type Props = ConnectedProps<typeof connector>;
+
+const validateMessages = {
+  required: "${label} is required!",
+  types: {
+    email: "${label} is not validate email!",
+    number: "${label} is not a validate number!",
+  },
+  number: {
+    range: "${label} must be between ${min} and ${max}",
+  },
+};
+
+/* eslint-disable @typescript-eslint/camelcase */
+const ini = {
+  company_name: "WhatsApp",
+  company_size: "big",
+  company_site: "https://web.whatsapp.com/",
+  linkedin: "https://www.linkedin.com",
+  competitors: ["telegram"],
+  name_1: "Rafael",
+  cell_phone_1_codes: "1",
+  cell_phone_1: "9999999999",
+  company_email_1: "ts@ts.ts",
+  persona_email_1: "ts@ts.ts",
+  facebook_1: "fb.com",
+  personal_linkedin_1: "https://www.linkedin.com",
+  country: "Russia, Moscow",
+  interests: ["TVs", "Football", "Travel"],
+  sector: ["Software", "Insurance"],
+  area: ["marketing"],
+  position: ["assistant"],
+  services: ["Flour - Semolina"],
+  nse: "Regular",
+  countable_name: "Jose",
+  countable_phone_codes: "1",
+  countable_phone: "9990292992",
+  countable_email: "ts@ts.ts",
+  company_account: "99288383994",
+};
+
+const FormClient: React.FunctionComponent<Props> = (props) => {
   const [decision, setDecision] = React.useState<Array<number>>([1]);
+  React.useEffect(() => {
+    props.loadCodeNumAct();
+  }, []);
   return (
     <>
       <TitleFormGeneral>Clients Form</TitleFormGeneral>
@@ -32,7 +89,8 @@ const FormClient: React.FunctionComponent<{}> = () => {
         className="form-clients"
         style={{ width: "100%" }}
         onFinish={(v) => console.log(v)}
-        initialValues={{ codPhoneOpc: "1" }}
+        validateMessages={validateMessages}
+        initialValues={{ codPhoneOpc: "1", ...ini }}
       >
         <Content>
           <StatusForm />
@@ -72,4 +130,4 @@ const FormClient: React.FunctionComponent<{}> = () => {
   );
 };
 
-export default FormClient;
+export default connector(FormClient);

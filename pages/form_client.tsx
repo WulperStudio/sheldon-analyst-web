@@ -1,6 +1,5 @@
 import React from "react";
 import { connect, ConnectedProps } from "react-redux";
-import Router from "next/router";
 
 import LayoutGeneric from "../layout/generic";
 import {
@@ -19,14 +18,7 @@ const connector = connect(mapState);
 
 type Props = ConnectedProps<typeof connector>;
 
-const Home: React.FunctionComponent<Props> = (props) => {
-  // persistence session
-  React.useEffect(() => {
-    if (!props.token) {
-      Router.push("/");
-    }
-  }, []);
-
+const FormClientPage: React.FunctionComponent<Props> = () => {
   return (
     <LayoutGeneric>
       <FormClient />
@@ -34,4 +26,4 @@ const Home: React.FunctionComponent<Props> = (props) => {
   );
 };
 
-export default connector(Home);
+export default connector(FormClientPage);

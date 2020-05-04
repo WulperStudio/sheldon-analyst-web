@@ -1,3 +1,4 @@
+import Router from "next/router";
 import {
   SUBMIT_FORM_LOGIN,
   ActionLoginSession,
@@ -16,10 +17,16 @@ export const isActiveSession = () => {
   return (dispatch: dispatchLogin) => {
     const token = getSession();
     if (typeof token === "string") {
-      AuthSession(token).then((data) => {
-        data.token = token;
-        dispatch(successLogin(data));
-      });
+      AuthSession(token)
+        .then((data) => {
+          data.token = token;
+          dispatch(successLogin(data));
+        })
+        .catch(() => {
+          Router.push("/");
+        });
+    } else {
+      Router.push("/");
     }
   };
 };
