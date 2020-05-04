@@ -8,6 +8,7 @@ import StatusForm from "./status_form";
 import CompanyInfo from "./company_info";
 import DecisionMaker from "./decision_maker";
 import Segmentation from "./segmentation";
+import CountableInfo from "./countable_info";
 import History from "./history";
 
 const removeDecision = (
@@ -31,6 +32,7 @@ const FormClient: React.FunctionComponent<{}> = () => {
         className="form-clients"
         style={{ width: "100%" }}
         onFinish={(v) => console.log(v)}
+        initialValues={{ codPhoneOpc: "1" }}
       >
         <Content>
           <StatusForm />
@@ -55,6 +57,7 @@ const FormClient: React.FunctionComponent<{}> = () => {
           <br />
 
           <Segmentation />
+          <CountableInfo />
           <History />
           <br />
           <br />

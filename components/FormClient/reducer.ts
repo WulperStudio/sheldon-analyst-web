@@ -2,6 +2,11 @@ import {
   SUBMIT_OPEN_GRAPH,
   SUCCESS_OPEN_GRAPH,
   FAIL_OPEN_GRAPH,
+  LOAD_CODE_NUMBERS,
+  SUBMIT_FIND_COUNTRY,
+  LOAD_FIND_COUNTRY,
+  SUBMIT_GENERAL_INFO,
+  LOAD_GENERAL_INFO,
   StatusFormClient,
   ActionFormClient,
 } from "./type";
@@ -14,6 +19,23 @@ export const initialState = (): StatusFormClient => ({
     url: "",
     isLoading: false,
     nodata: true,
+  },
+  codeNum: [],
+  country: {
+    list: [],
+    selected: undefined,
+    find: "",
+    isLoading: false,
+  },
+  genCInfo: {
+    potentialSize: [],
+    interests: [],
+    companySector: [],
+    companyArea: [],
+    companyPosition: [],
+    companyProducts: [],
+    nse: [],
+    isLoading: false,
   },
 });
 
@@ -30,6 +52,26 @@ export const FormClientReducer = (
       return {
         ...state,
         opg: { ...state.opg, isLoading: false, nodata: true },
+      };
+    case LOAD_CODE_NUMBERS:
+      return { ...state, codeNum: action.payload };
+    case SUBMIT_FIND_COUNTRY:
+      return { ...state, country: { ...state.country, isLoading: true } };
+    case LOAD_FIND_COUNTRY:
+      return {
+        ...state,
+        country: { ...state.country, list: action.payload, isLoading: false },
+      };
+    case SUBMIT_GENERAL_INFO:
+      return { ...state, genCInfo: { ...state.genCInfo, isLoading: true } };
+    case LOAD_GENERAL_INFO:
+      return {
+        ...state,
+        genCInfo: {
+          ...state.genCInfo,
+          ...action.payload,
+          isLoading: false,
+        },
       };
     default:
       return state;

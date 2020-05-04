@@ -14,9 +14,14 @@ import Loader from "@assets/loader.svg";
 import Broken from "@assets/broken.png";
 import { validateFieldUrl } from "../../../helpers/valid_form_client";
 
-const mapState = (state: RxStatusFormClient): OpenGraphModel => {
+interface PropsMapState extends OpenGraphModel {
+  potentialSize: Array<string>;
+}
+
+const mapState = (state: RxStatusFormClient): PropsMapState => {
   return {
     ...state.FormClientReducer.opg,
+    potentialSize: state.FormClientReducer.genCInfo.potentialSize,
   };
 };
 
@@ -58,7 +63,7 @@ const CompanyInfo: React.FunctionComponent<Props> = (props) => {
       <Row>
         <SimpleSelect
           name="company_size"
-          data={[]}
+          data={props.potentialSize}
           placeholder="Company Size"
           addTag={false}
         />

@@ -2,8 +2,6 @@ import React from "react";
 import { Form, Select } from "antd";
 import { v4 as uid } from "uuid";
 
-import { IconItem } from "../styled";
-
 const { Option } = Select;
 
 interface Props {
@@ -23,11 +21,6 @@ const SimpleSelect: React.FunctionComponent<Props> = (props) => {
         className="standard-item"
         label={props.label || props.placeholder}
       >
-        {/* {props.AddIcon ? (
-          <IconItem className="icon-select-standard ant-input-prefix">
-            <img src={props.AddIcon} />
-          </IconItem>
-        ) : null} */}
         <Select
           className={`select-standard ${
             props.AddIcon ? "select-standard-with-icon" : ""

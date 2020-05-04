@@ -1,7 +1,18 @@
 import axios from "axios";
 import getConfig from "next/config";
-import { AttributeResponse, OpenGraphModel } from "./type";
-import { successOpGHidrate } from "./hidrate";
+import {
+  AttributeResponse,
+  OpenGraphModel,
+  CodeNumberModel,
+  CountryModel,
+  GeneralCInfoModel,
+} from "./type";
+import {
+  successOpGHidrate,
+  successCodeNumHidrate,
+  successGenCInfoHidrate,
+  successCountryHidrate,
+} from "./hidrate";
 
 const {
   publicRuntimeConfig: { API_ANALYST },
@@ -23,4 +34,52 @@ export const OpenGraph = async (
     }
   );
   return successOpGHidrate(response);
+};
+
+export const loadCodeNumService = async (
+  token: string
+): Promise<Array<CodeNumberModel>> => {
+  const response = await axios.post<AttributeResponse>(
+    `${API_ANALYST}/get_code_numbers`,
+    {},
+    {
+      headers: {
+        Authorization: token,
+      },
+    }
+  );
+  return successCodeNumHidrate(response);
+};
+
+export const loadCountryService = async (
+  find: string,
+  token: string
+): Promise<Array<CountryModel>> => {
+  const response = await axios.post<AttributeResponse>(
+    `${API_ANALYST}/get_country_cities`,
+    {
+      find: find,
+    },
+    {
+      headers: {
+        Authorization: token,
+      },
+    }
+  );
+  return successCountryHidrate(response);
+};
+
+export const loadGenCInfoService = async (
+  token: string
+): Promise<GeneralCInfoModel> => {
+  const response = await axios.post<AttributeResponse>(
+    `${API_ANALYST}/get_general_contact_info`,
+    {},
+    {
+      headers: {
+        Authorization: token,
+      },
+    }
+  );
+  return successGenCInfoHidrate(response);
 };

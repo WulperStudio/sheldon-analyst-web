@@ -65,6 +65,10 @@
   font-size: 16px;
 }
 
+.form-clients .standard-item .select-standard.search-add input {
+  margin: 5px 0 0 -2px;
+}
+
 .form-clients .standard-item .select-standard .ant-select-selector {
   height: 43px;
   padding: 6px 0 0 9px;
@@ -128,4 +132,12 @@
 
 .form-clients .standard-item.twins-last .select-multi {
   width: 155px;
+}
+
+.form-clients .standard-item .input-text.phone-input {
+  padding: 0;
+}
+
+.form-clients .standard-item .input-text.phone-input input {
+  height: 43px;
 }

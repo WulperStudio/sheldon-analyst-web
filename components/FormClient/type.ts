@@ -36,17 +36,115 @@ interface EventFailOpG {
 }
 
 /**
+ * Code Country Numbers
+ */
+
+export const LOAD_CODE_NUMBERS = "LOAD_CODE_NUMBERS";
+
+export interface CodeNumberModel {
+  Iso2: string;
+  Name: string;
+  Iso3: string;
+  Unicode: string;
+  Dial: string;
+  Currency: string;
+  Capital: string;
+  Continent: string;
+}
+
+interface EventLoadCodeNum {
+  type: typeof LOAD_CODE_NUMBERS;
+  payload: Array<CodeNumberModel>;
+}
+
+/**
+ * Country & City
+ */
+
+export const SUBMIT_FIND_COUNTRY = "SUBMIT_FIND_COUNTRY";
+export const LOAD_FIND_COUNTRY = "LOAD_FIND_COUNTRY";
+
+export interface CountryModel {
+  country: string;
+  sortCities: string;
+}
+
+export interface CountryState {
+  list: Array<CountryModel>;
+  find: string;
+  selected?: {
+    country: string;
+    city: string;
+  };
+  isLoading: boolean;
+}
+
+interface EventSubmitCountry {
+  type: typeof SUBMIT_FIND_COUNTRY;
+}
+
+interface EventSuccessCountry {
+  type: typeof LOAD_FIND_COUNTRY;
+  payload: Array<CountryModel>;
+}
+
+/**
+ * General Contact Info
+ */
+
+export const SUBMIT_GENERAL_INFO = "SUBMIT_GENERAL_INFO";
+export const LOAD_GENERAL_INFO = "LOAD_GENERAL_INFO";
+
+export interface GeneralCInfoModel {
+  potentialSize: Array<string>;
+  interests: Array<string>;
+  companySector: Array<string>;
+  companyArea: Array<string>;
+  companyPosition: Array<string>;
+  companyProducts: Array<string>;
+  nse: Array<string>;
+}
+
+export interface GeneralCInfoState extends GeneralCInfoModel {
+  isLoading: boolean;
+}
+
+interface EventSubmitGeneralContactInfo {
+  type: typeof SUBMIT_GENERAL_INFO;
+}
+
+interface EventSuccessGeneralContactInfo {
+  type: typeof LOAD_GENERAL_INFO;
+  payload: GeneralCInfoModel;
+}
+
+/**
  * General Status
  */
 
-export type ActionFormClient = EventSubmitOpG | EventSuccessOpG | EventFailOpG;
+export type ActionFormClient =
+  | EventSubmitOpG
+  | EventSuccessOpG
+  | EventFailOpG
+  | EventLoadCodeNum
+  | EventSubmitCountry
+  | EventSuccessCountry
+  | EventSubmitGeneralContactInfo
+  | EventSuccessGeneralContactInfo;
 
 export interface StatusFormClient {
   opg: OpenGraphModel;
+  codeNum: Array<CodeNumberModel>;
+  country: CountryState;
+  genCInfo: GeneralCInfoState;
 }
 
 export type AttributeResponse = {
-  data: ServiceOpenGraph;
+  data:
+    | ServiceOpenGraph
+    | Array<CodeNumberModel>
+    | Array<CountryModel>
+    | GeneralCInfoModel;
 };
 
 export interface RxStatusFormClient {
