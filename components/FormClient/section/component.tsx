@@ -4,7 +4,7 @@ import { Form, Button } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import { Store } from "rc-field-form/lib/interface";
 
-import { RxStatusFormClient, FormClientModel, OpenGraphModel } from "../type";
+import { RxStatusFormClient, FormClientModel } from "../type";
 import { loadCodeNum, loadFormClient } from "../action";
 
 import { TitleFormGeneral, Content } from "./styled";
