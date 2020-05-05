@@ -37,13 +37,13 @@ const CountableInfo: React.FunctionComponent<Props> = (props) => {
           placeholder="Name & Lastname"
           required={true}
         />
-        <PhoneInput
+        {/* <PhoneInput
           name="countable_phone"
           placeholder="Mobile phone"
           required={true}
           validator={validatePhoneNumber("Mobile phone")}
           data={props.codeNum}
-        />
+        /> */}
       </Row>
       <Row>
         <SimpleInputText
