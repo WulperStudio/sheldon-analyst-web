@@ -83,25 +83,29 @@ export const submitFormClientHidrate = (
     return decision;
   });
 
+  const {
+    name,
+    cellPhone,
+    cellPhoneCode,
+    personaEmail,
+    companyEmail,
+    personalLinkedin,
+    facebook,
+  } = form.principalDecisionMaker;
+
   return {
     company_name: form.companyName,
     potential_size: form.companySize,
     web_url: form.companySite,
     company_linkedin_url: form.linkedin,
 
-    decisionmaker: form.principalDecisionMaker.name
-      ?.split(" ")
-      .slice(0, 1)
-      .join(" "),
-    lastname: form.principalDecisionMaker.name
-      ?.split(" ")
-      .slice(1, form.principalDecisionMaker.name?.length)
-      .join(" "),
-    cellphone_whatsapp: form.principalDecisionMaker.cellPhone,
-    personal_companymail: form.principalDecisionMaker.companyEmail,
-    personal_mail: form.principalDecisionMaker.personaEmail,
-    facebook_url: form.principalDecisionMaker.facebook,
-    linkedin_url: form.principalDecisionMaker.personalLinkedin,
+    decisionmaker: name?.split(" ").slice(0, 1).join(" "),
+    lastname: name?.split(" ").slice(1, name?.length).join(" "),
+    cellphone_whatsapp: `+${cellPhoneCode} ${cellPhone}`,
+    personal_companymail: companyEmail,
+    personal_mail: personaEmail,
+    facebook_url: facebook,
+    linkedin_url: personalLinkedin,
 
     country: form.country?.split(", ").slice(0, 1).join(" "),
     city: form.country?.split(", ").slice(1, 2).join(" "),
@@ -111,6 +115,7 @@ export const submitFormClientHidrate = (
     company_position: form.position,
     company_products: form.services,
     nse: form.nse,
+    picture_url: form.picture,
     extra_decision_market: DecisionMarkets,
   };
 };

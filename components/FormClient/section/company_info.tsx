@@ -41,7 +41,7 @@ const CompanyInfo: React.FunctionComponent<Props> = (props) => {
   return (
     <>
       <Row>
-        <TitleSectionForm>Company info</TitleSectionForm>
+        <TitleSectionForm id="company">Company info</TitleSectionForm>
       </Row>
       <Row>
         <SimpleInputText name="companyName" placeholder="Company Name" />

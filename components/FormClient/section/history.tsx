@@ -9,7 +9,7 @@ const History: React.FunctionComponent<{}> = () => {
   return (
     <>
       <Row>
-        <TitleSectionForm>History updates</TitleSectionForm>
+        <TitleSectionForm id="history">History updates</TitleSectionForm>
       </Row>
       <Row>
         <HistoryContainer className="history-content">

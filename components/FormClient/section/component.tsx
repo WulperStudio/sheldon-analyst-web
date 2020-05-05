@@ -4,7 +4,7 @@ import { Form, Button } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import { Store } from "rc-field-form/lib/interface";
 
-import { RxStatusFormClient, FormClientModel } from "../type";
+import { RxStatusFormClient, FormClientModel, OpenGraphModel } from "../type";
 import { loadCodeNum, loadFormClient } from "../action";
 
 import { TitleFormGeneral, Content } from "./styled";
@@ -17,11 +17,13 @@ import History from "./history";
 
 interface PropsMapState {
   form: FormClientModel;
+  opgPicture?: string;
 }
 
 const mapState = (state: RxStatusFormClient): PropsMapState => {
   return {
     form: state.FormClientReducer.form,
+    opgPicture: state.FormClientReducer.opg.image,
   };
 };
 
@@ -30,7 +32,7 @@ const mapDispatch = (dispatch: Function) => {
     loadCodeNumAct: () => {
       dispatch(loadCodeNum());
     },
-    loadFormClientAct: (form: Store) => {
+    loadFormClientAct: (form: Store, opgPicture?: string) => {
       form.decisionMaker = Object.keys(form)
         .filter((item) => {
           if (item.indexOf("decisionMarket_") > -1) {
@@ -39,6 +41,7 @@ const mapDispatch = (dispatch: Function) => {
           return false;
         })
         .map((item) => form[item]);
+      form.picture = opgPicture;
       dispatch(loadFormClient(form as FormClientModel));
     },
   };
@@ -83,7 +86,7 @@ const FormClient: React.FunctionComponent<Props> = (props) => {
         className="form-clients"
         style={{ width: "100%" }}
         onFinish={(form) => {
-          props.loadFormClientAct(form as FormClientModel);
+          props.loadFormClientAct(form as FormClientModel, props.opgPicture);
         }}
         validateMessages={validateMessages}
         initialValues={{ codPhoneOpc: "1" }}
@@ -118,6 +121,8 @@ const FormClient: React.FunctionComponent<Props> = (props) => {
             <PlusOutlined />
             Add Decision Maker
           </Button>
+          <br />
+          <br />
           <Segmentation />
           <History />
           <br />

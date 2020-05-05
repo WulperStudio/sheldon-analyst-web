@@ -41,7 +41,9 @@ const DecisionMaker: React.FunctionComponent<Props> = (props) => {
   return (
     <>
       <Row>
-        <TitleSectionForm>{props.reference} Decision Maker</TitleSectionForm>
+        <TitleSectionForm id="contact">
+          {props.reference} Decision Maker
+        </TitleSectionForm>
         {props.isClosing ? (
           <CloseDecisionMaker onClick={() => props.onClosing()}>
             <CloseSquareOutlined />

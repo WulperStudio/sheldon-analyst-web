@@ -44,6 +44,7 @@ export const initialState = (): StatusFormClient => ({
     decisionMaker: [],
     principalDecisionMaker: {
       cellPhone: "",
+      cellPhoneCode: "",
       companyEmail: "",
     },
     isLoading: false,

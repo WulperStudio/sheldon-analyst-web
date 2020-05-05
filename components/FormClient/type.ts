@@ -120,12 +120,14 @@ export interface RequestSaveDataSubmit extends DecisionMakerDataSubmit {
   company_position?: Array<string>;
   company_products?: Array<string>;
   nse?: string;
+  picture_url?: string;
   extra_decision_market: Array<DecisionMakerDataSubmit | undefined>;
 }
 
 export interface DecisionMaker {
   name?: string;
   cellPhone: string;
+  cellPhoneCode: string;
   companyEmail: string;
   personaEmail?: string;
   facebook?: string;
@@ -148,6 +150,7 @@ export interface FormClientModel {
   position?: Array<string>;
   services?: Array<string>;
   nse?: string;
+  picture?: string;
   isLoading?: boolean;
   done?: boolean;
   fail?: boolean;

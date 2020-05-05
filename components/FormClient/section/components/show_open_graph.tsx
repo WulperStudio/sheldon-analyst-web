@@ -15,7 +15,7 @@ import {
   DataNoFound,
 } from "../styled";
 
-interface Props extends OpenGraphModel {
+export interface Props extends OpenGraphModel {
   LoadIcon: string;
   defaultImage: string;
 }
@@ -36,7 +36,7 @@ const ShowOpenGraph: React.FunctionComponent<Props> = (props) => {
 
   return (
     <WrapOpenGraphShow>
-      <OpenGraphShow>
+      <OpenGraphShow className={props.nodata && "open-graph--nodata"}>
         {props.isLoading ? (
           <LoadingOpenGraph>
             <IconSpinLoadingOPG src={props.LoadIcon} />

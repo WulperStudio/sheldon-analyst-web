@@ -22,6 +22,8 @@ interface Props {
   validator?: Validator;
 }
 
+import Flag from "react-world-flags";
+
 const PhoneNumber: React.FunctionComponent<Props> = (props) => {
   return (
     <Form.Item
@@ -33,7 +35,6 @@ const PhoneNumber: React.FunctionComponent<Props> = (props) => {
         {
           required: props.required || false,
           whitespace: true,
-          message: "Please input passenger's name or delete this field.",
         },
         {
           validator: props.validator || defaultValidator,
@@ -45,11 +46,20 @@ const PhoneNumber: React.FunctionComponent<Props> = (props) => {
           props.AddIcon ? " input-text-with-icon" : ""
         } phone-input`}
         addonBefore={
-          <Form.Item name={props.nameCode} noStyle>
-            <Select style={{ width: 110 }}>
+          <Form.Item
+            name={props.nameCode}
+            rules={[
+              {
+                required: props.required || false,
+                message: "Please select Country phone code.",
+              },
+            ]}
+            noStyle
+          >
+            <Select showSearch={true} style={{ width: 82 }}>
               {props.data.map((item) => (
-                <Option key={uid()} value={item.Dial} title={item.Iso3}>
-                  +{item.Dial}
+                <Option key={uid()} value={item.Name} title={item.Name}>
+                  <Flag code={item.Iso3} height="16" />
                 </Option>
               ))}
             </Select>

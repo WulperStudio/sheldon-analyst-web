@@ -57,7 +57,15 @@ export const HistoryContainer = styled.div`
 `;
 
 export const StatusFormContent = styled.div`
-  margin: 20px 0;
+  @media (max-width: 1125px) {
+    display: none;
+  }
+  position: fixed;
+  top: 148px;
+  left: 30px;
+  & .ant-steps-vertical {
+    height: 400px;
+  }
 `;
 
 export const CloseDecisionMaker = styled.div`
@@ -71,6 +79,7 @@ export const CloseDecisionMaker = styled.div`
 /**
  *  OPEN GRAPH ~ START
  */
+
 export const WrapOpenGraphShow = styled.div`
   width: 344px;
   max-width: 344px;
@@ -81,7 +90,6 @@ export const OpenGraphShow = styled.div`
   flex-direction: row;
   width: 320px;
   height: 65px;
-  border: 1px solid #d9d9d9;
   margin: 10px 0 0 0;
   border-radius: 2px;
   padding: 0;
@@ -126,7 +134,6 @@ export const WrapDescriptionOPG = styled.div`
   position: relative;
   width: calc(100% - 63px);
   height: 63px;
-  background-color: #d9d9d9;
 `;
 
 export const TitleWebOPG = styled.div`

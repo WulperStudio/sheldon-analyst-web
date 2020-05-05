@@ -8,11 +8,17 @@ import { StatusFormContent } from "./styled";
 const StatusForm: React.FunctionComponent<{}> = () => {
   return (
     <StatusFormContent className="status-form-container">
-      <Steps progressDot current={1}>
-        <Step title="Company information" />
-        <Step title="Contact information" />
-        <Step title="Segmentation" />
-        <Step title="Countable information" />
+      <Steps current={1} direction="vertical">
+        <Step
+          status="finish"
+          title={<a href="#company">Company information</a>}
+        />
+        <Step
+          status="process"
+          title={<a href="#contact">Contact information</a>}
+        />
+        <Step status="wait" title={<a href="#segmentation">Segmentation</a>} />
+        <Step status="finish" title={<a href="#history">History</a>} />
       </Steps>
     </StatusFormContent>
   );

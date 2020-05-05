@@ -41,6 +41,7 @@
 
 .form-clients .standard-item {
   position: relative;
+  height: fit-content;
   max-width: 344px;
 }
 
@@ -140,4 +141,12 @@
 
 .form-clients .standard-item .input-text.phone-input input {
   height: 43px;
+}
+
+.form-clients .standard-item .input-text.phone-input .ant-select-selection-search input {
+  height: 30px;
+}
+
+.open-graph--nodata {
+  border: 1px solid #d9d9d9;
 }

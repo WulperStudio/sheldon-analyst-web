@@ -49,7 +49,7 @@ const Segmentation: React.FunctionComponent<Props> = (props) => {
   return (
     <>
       <Row>
-        <TitleSectionForm>Segmentation</TitleSectionForm>
+        <TitleSectionForm id="segmentation">Segmentation</TitleSectionForm>
       </Row>
       <Row>
         <MultiCountryCities
