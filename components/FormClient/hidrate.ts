@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/camelcase */
 import { AxiosResponse } from "axios";
 import {
   AttributeResponse,
@@ -6,6 +7,9 @@ import {
   CodeNumberModel,
   CountryModel,
   GeneralCInfoModel,
+  FormClientModel,
+  RequestSaveDataSubmit,
+  DecisionMakerDataSubmit,
 } from "./type";
 
 export const successOpGHidrate = ({
@@ -60,5 +64,53 @@ export const successGenCInfoHidrate = ({
     companyPosition: data.companyPosition,
     companyProducts: data.companyProducts,
     nse: data.nse,
+  };
+};
+
+export const submitFormClientHidrate = (
+  form: FormClientModel
+): RequestSaveDataSubmit => {
+  const DecisionMarkets = form.decisionMaker.map((item) => {
+    const decision: DecisionMakerDataSubmit = {
+      decisionmaker: item.name?.split(" ").slice(0, 1).join(" "),
+      lastname: item.name?.split(" ").slice(1, item.name?.length).join(" "),
+      cellphone_whatsapp: item.cellPhone,
+      personal_companymail: item.companyEmail,
+      personal_mail: item.personaEmail,
+      facebook_url: item.facebook,
+      linkedin_url: item.personalLinkedin,
+    };
+    return decision;
+  });
+
+  return {
+    company_name: form.companyName,
+    potential_size: form.companySize,
+    web_url: form.companySite,
+    company_linkedin_url: form.linkedin,
+
+    decisionmaker: form.principalDecisionMaker.name
+      ?.split(" ")
+      .slice(0, 1)
+      .join(" "),
+    lastname: form.principalDecisionMaker.name
+      ?.split(" ")
+      .slice(1, form.principalDecisionMaker.name?.length)
+      .join(" "),
+    cellphone_whatsapp: form.principalDecisionMaker.cellPhone,
+    personal_companymail: form.principalDecisionMaker.companyEmail,
+    personal_mail: form.principalDecisionMaker.personaEmail,
+    facebook_url: form.principalDecisionMaker.facebook,
+    linkedin_url: form.principalDecisionMaker.personalLinkedin,
+
+    country: form.country?.split(", ").slice(0, 1).join(" "),
+    city: form.country?.split(", ").slice(1, 2).join(" "),
+    interests: form.interests,
+    company_sector: form.sector,
+    company_area: form.area,
+    company_position: form.position,
+    company_products: form.services,
+    nse: form.nse,
+    extra_decision_market: DecisionMarkets,
   };
 };

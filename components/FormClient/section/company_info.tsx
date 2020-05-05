@@ -44,11 +44,7 @@ const CompanyInfo: React.FunctionComponent<Props> = (props) => {
         <TitleSectionForm>Company info</TitleSectionForm>
       </Row>
       <Row>
-        <SimpleInputText
-          name="company_name"
-          placeholder="Company Name"
-          required={true}
-        />
+        <SimpleInputText name="companyName" placeholder="Company Name" />
         <ShowOpenGraph
           title={props.title}
           desc={props.desc}
@@ -62,17 +58,16 @@ const CompanyInfo: React.FunctionComponent<Props> = (props) => {
       </Row>
       <Row>
         <SimpleSelect
-          name="company_size"
+          name="companySize"
           data={props.potentialSize}
           placeholder="Company Size"
           addTag={false}
         />
         <SimpleInputText
-          name="company_site"
+          name="companySite"
           placeholder="Company Site"
           onBlurValue={(value) => props.getOpG(value)}
           validator={validateFieldUrl("Company Site")}
-          required={true}
         />
       </Row>
       <Row>
@@ -80,14 +75,12 @@ const CompanyInfo: React.FunctionComponent<Props> = (props) => {
           name="linkedin"
           placeholder="Linkedin"
           validator={validateFieldUrl("Linkedin")}
-          required={true}
         />
         <MultiSelect
           name="competitors"
           data={[]}
           placeholder="Competitors"
           addTag={true}
-          required={true}
         />
       </Row>
     </>

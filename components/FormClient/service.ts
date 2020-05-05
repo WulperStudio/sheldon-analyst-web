@@ -6,12 +6,14 @@ import {
   CodeNumberModel,
   CountryModel,
   GeneralCInfoModel,
+  FormClientModel,
 } from "./type";
 import {
   successOpGHidrate,
   successCodeNumHidrate,
   successGenCInfoHidrate,
   successCountryHidrate,
+  submitFormClientHidrate,
 } from "./hidrate";
 
 const {
@@ -82,4 +84,22 @@ export const loadGenCInfoService = async (
     }
   );
   return successGenCInfoHidrate(response);
+};
+
+export const loadFormClientService = async (
+  form: FormClientModel,
+  token: string
+): Promise<void> => {
+  const data = submitFormClientHidrate(form);
+  await axios.post<AttributeResponse>(
+    `${API_ANALYST}/create_contacts`,
+    {
+      ...data,
+    },
+    {
+      headers: {
+        Authorization: token,
+      },
+    }
+  );
 };

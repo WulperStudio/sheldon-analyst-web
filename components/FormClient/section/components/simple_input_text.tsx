@@ -11,7 +11,7 @@ import {
 } from "../../../../helpers/valid_form_client";
 
 interface Props {
-  name: string;
+  name: string | Array<string>;
   placeholder: string;
   label?: string;
   AddIcon?: string;

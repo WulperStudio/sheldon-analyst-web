@@ -11,7 +11,8 @@ import { CodeNumberModel } from "../../type";
 const { Option } = Select;
 
 interface Props {
-  name: string;
+  name: string | Array<string>;
+  nameCode: string | Array<string>;
   placeholder: string;
   data: Array<CodeNumberModel>;
   label?: string;
@@ -27,7 +28,6 @@ const PhoneNumber: React.FunctionComponent<Props> = (props) => {
       name={props.name}
       className="standard-item"
       label={props.label || props.placeholder}
-      hasFeedback={true}
       validateStatus={props.vdStatus}
       rules={[
         {
@@ -45,7 +45,7 @@ const PhoneNumber: React.FunctionComponent<Props> = (props) => {
           props.AddIcon ? " input-text-with-icon" : ""
         } phone-input`}
         addonBefore={
-          <Form.Item name={`${props.name}_codes`} noStyle>
+          <Form.Item name={props.nameCode} noStyle>
             <Select style={{ width: 110 }}>
               {props.data.map((item) => (
                 <Option key={uid()} value={item.Dial} title={item.Iso3}>

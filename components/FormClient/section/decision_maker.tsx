@@ -1,4 +1,5 @@
 import React from "react";
+
 import { connect, ConnectedProps } from "react-redux";
 import { CloseSquareOutlined } from "@ant-design/icons";
 
@@ -17,6 +18,7 @@ interface PropsParent {
   reference: number;
   onClosing: Function;
   isClosing: boolean;
+  groupName?: string;
 }
 
 interface PropsMapState {
@@ -48,11 +50,16 @@ const DecisionMaker: React.FunctionComponent<Props> = (props) => {
       </Row>
       <Row>
         <SimpleInputText
-          name={`name_${props.reference}`}
+          name={props.groupName ? [props.groupName, "name"] : "name"}
           placeholder="Name & Lastname"
         />
         <PhoneInput
-          name={`cell_phone_${props.reference}`}
+          name={props.groupName ? [props.groupName, "cellPhone"] : "cellPhone"}
+          nameCode={
+            props.groupName
+              ? [props.groupName, "cellPhoneCode"]
+              : "cellPhoneCode"
+          }
           placeholder="Mobile phone"
           required={true}
           validator={validatePhoneNumber("Mobile phone")}
@@ -61,24 +68,33 @@ const DecisionMaker: React.FunctionComponent<Props> = (props) => {
       </Row>
       <Row>
         <SimpleInputText
-          name={`company_email_${props.reference}`}
+          name={
+            props.groupName ? [props.groupName, "companyEmail"] : "companyEmail"
+          }
           placeholder="Company email"
+          required={true}
           type="email"
         />
         <SimpleInputText
-          name={`persona_email_${props.reference}`}
+          name={
+            props.groupName ? [props.groupName, "personaEmail"] : "personaEmail"
+          }
           placeholder="Personal email"
           type="email"
         />
       </Row>
       <Row>
         <SimpleInputText
-          name={`facebook_${props.reference}`}
+          name={props.groupName ? [props.groupName, "facebook"] : "facebook"}
           placeholder="Facebook"
           validator={validateFieldUrl("Facebook")}
         />
         <SimpleInputText
-          name={`personal_linkedin_${props.reference}`}
+          name={
+            props.groupName
+              ? [props.groupName, "personalLinkedin"]
+              : "personalLinkedin"
+          }
           placeholder="Linkedin"
           validator={validateFieldUrl("Linkedin")}
         />

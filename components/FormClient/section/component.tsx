@@ -2,8 +2,10 @@ import React from "react";
 import { connect, ConnectedProps } from "react-redux";
 import { Form, Button } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
+import { Store } from "rc-field-form/lib/interface";
 
-import { loadCodeNum } from "../action";
+import { RxStatusFormClient, FormClientModel } from "../type";
+import { loadCodeNum, loadFormClient } from "../action";
 
 import { TitleFormGeneral, Content } from "./styled";
 
@@ -11,8 +13,36 @@ import StatusForm from "./status_form";
 import CompanyInfo from "./company_info";
 import DecisionMaker from "./decision_maker";
 import Segmentation from "./segmentation";
-import CountableInfo from "./countable_info";
 import History from "./history";
+
+interface PropsMapState {
+  form: FormClientModel;
+}
+
+const mapState = (state: RxStatusFormClient): PropsMapState => {
+  return {
+    form: state.FormClientReducer.form,
+  };
+};
+
+const mapDispatch = (dispatch: Function) => {
+  return {
+    loadCodeNumAct: () => {
+      dispatch(loadCodeNum());
+    },
+    loadFormClientAct: (form: Store) => {
+      form.decisionMaker = Object.keys(form)
+        .filter((item) => {
+          if (item.indexOf("decisionMarket_") > -1) {
+            return item;
+          }
+          return false;
+        })
+        .map((item) => form[item]);
+      dispatch(loadFormClient(form as FormClientModel));
+    },
+  };
+};
 
 const removeDecision = (
   decision: Array<number>,
@@ -26,15 +56,7 @@ const removeDecision = (
   return aux;
 };
 
-const mapDispatch = (dispatch: Function) => {
-  return {
-    loadCodeNumAct: () => {
-      dispatch(loadCodeNum());
-    },
-  };
-};
-
-const connector = connect(null, mapDispatch);
+const connector = connect(mapState, mapDispatch);
 
 type Props = ConnectedProps<typeof connector>;
 
@@ -49,36 +71,8 @@ const validateMessages = {
   },
 };
 
-/* eslint-disable @typescript-eslint/camelcase */
-const ini = {
-  company_name: "WhatsApp",
-  company_size: "big",
-  company_site: "https://web.whatsapp.com/",
-  linkedin: "https://www.linkedin.com",
-  competitors: ["telegram"],
-  name_1: "Rafael",
-  cell_phone_1_codes: "1",
-  cell_phone_1: "9999999999",
-  company_email_1: "ts@ts.ts",
-  persona_email_1: "ts@ts.ts",
-  facebook_1: "fb.com",
-  personal_linkedin_1: "https://www.linkedin.com",
-  country: "Russia, Moscow",
-  interests: ["TVs", "Football", "Travel"],
-  sector: ["Software", "Insurance"],
-  area: ["marketing"],
-  position: ["assistant"],
-  services: ["Flour - Semolina"],
-  nse: "Regular",
-  countable_name: "Jose",
-  countable_phone_codes: "1",
-  countable_phone: "9990292992",
-  countable_email: "ts@ts.ts",
-  company_account: "99288383994",
-};
-
 const FormClient: React.FunctionComponent<Props> = (props) => {
-  const [decision, setDecision] = React.useState<Array<number>>([1]);
+  const [decision, setDecision] = React.useState<Array<number>>([]);
   React.useEffect(() => {
     props.loadCodeNumAct();
   }, []);
@@ -88,34 +82,43 @@ const FormClient: React.FunctionComponent<Props> = (props) => {
       <Form
         className="form-clients"
         style={{ width: "100%" }}
-        onFinish={(v) => console.log(v)}
+        onFinish={(form) => {
+          props.loadFormClientAct(form as FormClientModel);
+        }}
         validateMessages={validateMessages}
-        initialValues={{ codPhoneOpc: "1", ...ini }}
+        initialValues={{ codPhoneOpc: "1" }}
       >
         <Content>
           <StatusForm />
           <CompanyInfo />
+          <DecisionMaker
+            onClosing={() => null}
+            groupName="principalDecisionMaker"
+            isClosing={false}
+            reference={1}
+          />
           {decision.map((item, index) => (
             <DecisionMaker
               key={item}
-              reference={index + 1}
-              isClosing={decision.length > 1}
+              reference={index + 2}
+              isClosing={true}
+              groupName={`decisionMarket_${index + 1}`}
               onClosing={() => setDecision(removeDecision(decision, item))}
             />
           ))}
           <Button
             type="primary"
             onClick={() =>
-              setDecision([...decision, decision[decision.length - 1] + 1])
+              setDecision([
+                ...decision,
+                (decision[decision.length - 1] || 0) + 1,
+              ])
             }
           >
             <PlusOutlined />
             Add Decision Maker
           </Button>
-          <br />
-
           <Segmentation />
-          <CountableInfo />
           <History />
           <br />
           <br />

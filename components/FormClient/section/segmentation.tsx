@@ -37,8 +37,6 @@ const connector = connect(mapState, mapDispatch);
 type Props = ConnectedProps<typeof connector>;
 
 const Segmentation: React.FunctionComponent<Props> = (props) => {
-  const p = ["h0", "h1", "h2", "h3", "h4", "h5", "h6", "h7", "h8", "h9"];
-
   React.useEffect(() => {
     props.genCInfoStart();
   }, []);

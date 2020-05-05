@@ -9,6 +9,9 @@ import {
   LOAD_GENERAL_INFO,
   StatusFormClient,
   ActionFormClient,
+  SUBMIT_FORM,
+  SUCCESS_FORM,
+  FAIL_FORM,
 } from "./type";
 
 export const initialState = (): StatusFormClient => ({
@@ -36,6 +39,16 @@ export const initialState = (): StatusFormClient => ({
     companyProducts: [],
     nse: [],
     isLoading: false,
+  },
+  form: {
+    decisionMaker: [],
+    principalDecisionMaker: {
+      cellPhone: "",
+      companyEmail: "",
+    },
+    isLoading: false,
+    done: false,
+    fail: false,
   },
 });
 
@@ -72,6 +85,21 @@ export const FormClientReducer = (
           ...action.payload,
           isLoading: false,
         },
+      };
+    case SUBMIT_FORM:
+      return {
+        ...state,
+        form: { ...action.payload, isLoading: true, done: false, fail: false },
+      };
+    case SUCCESS_FORM:
+      return {
+        ...state,
+        form: { ...state.form, isLoading: false, done: true },
+      };
+    case FAIL_FORM:
+      return {
+        ...state,
+        form: { ...state.form, isLoading: false, fail: true },
       };
     default:
       return state;

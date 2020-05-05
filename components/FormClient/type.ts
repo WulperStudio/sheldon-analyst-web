@@ -89,6 +89,83 @@ interface EventSuccessCountry {
 }
 
 /**
+ * Form Save Data
+ */
+
+export const SUBMIT_FORM = "SUBMIT_FORM";
+export const SUCCESS_FORM = "SUCCESS_FORM";
+export const FAIL_FORM = "FAIL_FORM";
+
+export interface DecisionMakerDataSubmit {
+  decisionmaker?: string;
+  lastname?: string;
+  cellphone_whatsapp: string;
+  personal_companymail: string;
+  personal_mail?: string;
+  facebook_url?: string;
+  linkedin_url?: string;
+}
+
+export interface RequestSaveDataSubmit extends DecisionMakerDataSubmit {
+  company_name?: string;
+  potential_size?: string;
+  web_url?: string;
+  company_linkedin_url?: string;
+  competitors?: Array<string>;
+  country?: string;
+  city?: string;
+  interests?: Array<string>;
+  company_sector?: Array<string>;
+  company_area?: Array<string>;
+  company_position?: Array<string>;
+  company_products?: Array<string>;
+  nse?: string;
+  extra_decision_market: Array<DecisionMakerDataSubmit | undefined>;
+}
+
+export interface DecisionMaker {
+  name?: string;
+  cellPhone: string;
+  companyEmail: string;
+  personaEmail?: string;
+  facebook?: string;
+  personalLinkedin?: string;
+}
+
+export interface FormClientModel {
+  companyName?: string;
+  companySize?: string;
+  companySite?: string;
+  linkedin?: string;
+  competitors?: Array<string>;
+  principalDecisionMaker: DecisionMaker;
+  decisionMaker: Array<DecisionMaker>;
+  country?: string;
+  city?: string;
+  interests?: Array<string>;
+  sector?: Array<string>;
+  area?: Array<string>;
+  position?: Array<string>;
+  services?: Array<string>;
+  nse?: string;
+  isLoading?: boolean;
+  done?: boolean;
+  fail?: boolean;
+}
+
+interface EventSubmitForm {
+  type: typeof SUBMIT_FORM;
+  payload: FormClientModel;
+}
+
+interface EventSuccessForm {
+  type: typeof SUCCESS_FORM;
+}
+
+interface EventFailForm {
+  type: typeof FAIL_FORM;
+}
+/**
  * General Contact Info
  */
 
@@ -130,13 +207,17 @@ export type ActionFormClient =
   | EventSubmitCountry
   | EventSuccessCountry
   | EventSubmitGeneralContactInfo
-  | EventSuccessGeneralContactInfo;
+  | EventSuccessGeneralContactInfo
+  | EventSubmitForm
+  | EventSuccessForm
+  | EventFailForm;
 
 export interface StatusFormClient {
   opg: OpenGraphModel;
   codeNum: Array<CodeNumberModel>;
   country: CountryState;
   genCInfo: GeneralCInfoState;
+  form: FormClientModel;
 }
 
 export type AttributeResponse = {
