@@ -1,16 +1,25 @@
 import React from "react";
 import { Layout } from "antd";
+import Link from "next/link";
 import { ContentMain, LogoSheldon } from "./styled";
 const { Header, Footer, Content } = Layout;
 
-const LayoutGeneric: React.FunctionComponent<{}> = (props) => {
+interface Props {
+  background?: string;
+}
+
+const LayoutGeneric: React.FunctionComponent<Props> = (props) => {
   return (
     <Layout>
       <Header>
-        <LogoSheldon>Sheldon Analyst</LogoSheldon>
+        <LogoSheldon>
+          <Link href="/">
+            <a style={{ color: "white" }}>Sheldon Analyst</a>
+          </Link>
+        </LogoSheldon>
       </Header>
 
-      <Layout>
+      <Layout style={{ backgroundColor: props.background || "white" }}>
         <Content>
           <ContentMain>{props.children}</ContentMain>
         </Content>

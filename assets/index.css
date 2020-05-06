@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
 .ant-layout {
   background-color: white;
 }
@@ -149,4 +151,17 @@
 
 .open-graph--nodata {
   border: 1px solid #d9d9d9;
+}
+
+/* TABLE CLIENTS WINDOW CHANGE */
+
+.window-changes {
+}
+
+.ant-steps-item-tail::after {
+  background-color: #ECEFF2 !important;
+}
+
+.ant-steps-icon {
+  content: "holaaaaa";
 }

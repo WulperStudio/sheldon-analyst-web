@@ -58,9 +58,15 @@ const Home: React.FunctionComponent<Props> = (props) => {
             LogOut
           </Button>
           <br />
-          <Link href="/form_client">
-            <a>Form Client</a>
-          </Link>
+          <div style={{ display: "flex" }}>
+            <Link href="/form_client">
+              <a>Form Client</a>
+            </Link>
+            &nbsp;&nbsp;&nbsp;
+            <Link href="/table_form">
+              <a>Table Form</a>
+            </Link>
+          </div>
         </>
       )}
     </LayoutGeneric>
