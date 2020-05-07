@@ -7,7 +7,7 @@ export const ContentMain = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  min-height: calc(100vh - 134px);
+  min-height: calc(120vh - 134px);
 `;
 
 export const LogoSheldon = styled.div`

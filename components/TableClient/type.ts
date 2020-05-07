@@ -27,6 +27,10 @@ export interface ClientDataService {
   potential_size: string;
   company_sector: string;
   company_products: Array<string>;
+  linkedin_url: string;
+  birthday: string;
+  sex: string;
+  nse: string;
 }
 
 export interface ClientDataModelService {
@@ -48,6 +52,10 @@ export interface ClientsData {
   companySize: string;
   companySector: string;
   companyProducts: Array<string>;
+  linkedinUrl: string;
+  birthday: string;
+  sex: string;
+  nse: string;
 }
 
 export interface ClientDataModel {

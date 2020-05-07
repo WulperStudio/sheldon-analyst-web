@@ -109,6 +109,52 @@ const RowTable: React.FunctionComponent<Props> = (props) => {
             title={`${props.name} ${props.lastName}`}
             subTitle={`${props.area} ${props.position}`}
           />
+          <WindowGeneral>
+            <div className="wrap-more-info">
+              <div className="line-info">
+                <span>Name:</span>
+                &nbsp;
+                <span>{`${props.name} ${props.lastName}`}</span>
+              </div>
+              <div className="line-info">
+                <span>Position:</span>
+                &nbsp;
+                <span>{`${props.area} ${props.position}`}</span>
+              </div>
+              <div className="line-info">
+                <span>Linkedin:</span>
+                &nbsp;
+                <span>
+                  <a href={props.linkedinUrl}>Go to LinkedIn</a>
+                </span>
+              </div>
+              <div className="line-info">
+                <span>Birthday:</span>
+                &nbsp;
+                <span>{props.birthday}</span>
+              </div>
+              <div className="line-info">
+                <span>Interests:</span>
+                &nbsp;
+                <span>{props.interests}</span>
+              </div>
+              <div className="line-info">
+                <span>Age:</span>
+                &nbsp;
+                <span></span>
+              </div>
+              <div className="line-info">
+                <span>Sex:</span>
+                &nbsp;
+                <span>{props.sex}</span>
+              </div>
+              <div className="line-info">
+                <span>NSE:</span>
+                &nbsp;
+                <span>{props.nse}</span>
+              </div>
+            </div>
+          </WindowGeneral>
         </ContentTableD>
       </TableD>
       <TableD>

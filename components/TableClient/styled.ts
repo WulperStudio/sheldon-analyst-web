@@ -46,7 +46,6 @@ export const ContentTableD = styled.div`
   &:hover .general-window {
     display: block;
   }
-
 `;
 
 export const TitleGeneralInto = styled.div`
