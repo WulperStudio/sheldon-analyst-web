@@ -153,15 +153,23 @@
   border: 1px solid #d9d9d9;
 }
 
-/* TABLE CLIENTS WINDOW CHANGE */
+.wrap-more-info {}
 
-.window-changes {
+.wrap-more-info .line-info {
+  margin: 0 0 5px 0;
 }
 
-.ant-steps-item-tail::after {
-  background-color: #ECEFF2 !important;
+.wrap-more-info .line-info span {
+  font-size: 12px;
+  font-weight: 500;
+  color: #0144BF;
 }
 
-.ant-steps-icon {
-  content: "holaaaaa";
+.wrap-more-info .line-info span:last-child {
+  color: #6D8492;
+}
+
+.wrap-more-info .line-info span:last-child a {
+  text-decoration: none;
+  color: #72D6FD;
 }

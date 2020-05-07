@@ -5,13 +5,16 @@ import styled from "styled-components";
  */
 
 export const WrapperTable = styled.div`
+  position: absolute;
+  top: 125px;
   background-color: white;
   border-collapse: collapse;
   box-shadow: 0px 3px 6px #00000029;
   border-radius: 11px;
   font-family: "Poppins", sans-serif;
   padding: 16px;
-  margin: 0 0 0 300px;
+  margin: auto;
+  zoom: 0.9;
 `;
 
 export const TableHead = styled.thead`
@@ -39,6 +42,11 @@ export const ContentTableD = styled.div`
   justify-content: center;
   position: relative;
   padding: 10px 15px;
+
+  &:hover .general-window {
+    display: block;
+  }
+
 `;
 
 export const TitleGeneralInto = styled.div`
@@ -50,7 +58,7 @@ export const TitleGeneralInto = styled.div`
 export const SubTitleGeneralInto = styled.div`
   font-size: 12px;
   font-weight: 500;
-  color: ${(props: { color: string }) => props.color || "#858686"};
+  color: ${(props: { color?: string }) => props.color || "#858686"};
 `;
 
 export const WrapperTitleSubTitle = styled.div`
@@ -58,6 +66,7 @@ export const WrapperTitleSubTitle = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   min-width: 150px;
+  text-align: ${(props: { center: boolean }) => (props.center ? "center" : "")};
 `;
 
 export const PictureGeneralProfile = styled.div`
@@ -83,15 +92,47 @@ export const SuperBadgeItem = styled.div`
   position: relative;
   width: 30px;
   height: 30px;
-  background-color: #e80d0d19;
+  background-color: ${(props: { background?: string }) =>
+    props.background || "#e80d0d19"};
   border-radius: 50%;
-  color: #ff6b81;
+  color: ${(props: { color?: string }) => props.color || "#ff6b81"};
   font-size: 10px;
 `;
 
 export const TitleSubTitleCenter = styled.div`
   & ${WrapperTitleSubTitle} {
     text-align: center;
+  }
+`;
+
+export const WindowGeneralPurpose = styled.div`
+  display: none;
+  position: absolute;
+  top: 55px;
+  left: 60px;
+  min-width: 205px;
+  max-width: 205px;
+  min-height: 253px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #0144bf;
+  box-shadow: 0px 0px 12px #00000029;
+  border-radius: 5px;
+  margin: 0 0 10px 0;
+  padding: 20px 0 0 10px;
+  z-index: 1;
+
+  &:after {
+    display: block;
+    content: " ";
+    position: absolute;
+    top: -9px;
+    left: 17px;
+    width: 15px;
+    height: 15px;
+    transform: rotateZ(45deg);
+    background-color: white;
+    border-top: 1px solid #0144bf;
+    border-left: 1px solid #0144bf;
   }
 `;
 
@@ -198,20 +239,6 @@ export const WrapperCompany = styled.div`
   flex-direction: row;
 `;
 
-export const WrapperIconCompany = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 41px;
-  height: 41px;
-  font-size: 21px;
-  color: #e6e6e6;
-`;
-
-/**
- * DECISION MARKET
- */
-
 /**
  * TAGS
  */
@@ -224,15 +251,6 @@ export const ContentTags = styled.div`
   overflow: hidden;
   font-weight: 100;
   font-size: 12px;
-  &:after {
-    content: "...";
-    position: absolute;
-    bottom: -4px;
-    right: -5px;
-    padding: 0 0.3em;
-    background: inherit;
-    font-size: 15px;
-  }
 `;
 
 /**
@@ -263,43 +281,14 @@ export const TimeLineItemBag = styled.div`
   left: 21px;
   width: 10px;
   height: 10px;
-  background-color: #ff6b81;
+  background-color: ${(props: { color?: string }) => props.color || "#ff6b81"};
   border-radius: 50%;
   color: white;
 `;
 
-/**
- * SIMILARS
- */
-
-export const WrapperSimilars = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  min-width: 130px;
-
-  & ${PictureGeneralProfile} {
-    margin: 0 -10px 0 0;
-  }
-
-  & ${SuperBadgeItem} {
-    background: #707070;
-    color: white;
-    width: 40px;
-    height: 40px;
-    font-weight: 500;
-  }
-`;
-
-export const SimilarCounter = styled.div``;
-
-/**
- * CHANGES
- */
-
 export const WindowChanges = styled.div`
   position: absolute;
-  top: 67px;
+  top: 78px;
   left: 0;
   width: 280px;
   height: 343px;
@@ -347,9 +336,34 @@ export const WindowChanges = styled.div`
     & div:nth-child(2) {
       color: #004da9;
     }
+
+    & .ant-steps-item-tail::after {
+      background-color: #eceff2 !important;
+    }
   }
 `;
 
 /**
- * SOURCES
+ * SIMILARS
  */
+
+export const WrapperSimilars = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-width: 130px;
+
+  & ${PictureGeneralProfile} {
+    margin: 0 -10px 0 0;
+  }
+
+  & ${SuperBadgeItem} {
+    background: #707070;
+    color: white;
+    width: 40px;
+    height: 40px;
+    font-weight: 500;
+  }
+`;
+
+export const SimilarCounter = styled.div``;
