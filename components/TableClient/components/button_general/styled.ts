@@ -13,9 +13,10 @@ export const ButtonGeneral = styled.button`
   text-align: left;
   font: SemiBold 14px/44px Poppins;
   letter-spacing: 0px;
-  color: #b4c4d5;
+  color: ${(props: { color?: string }) => props.color || "#b4c4d5"};
   line-height: 24px;
   font-weight: 600;
+  outline: none;
 
   ${(props: { center: boolean }) =>
     props.center

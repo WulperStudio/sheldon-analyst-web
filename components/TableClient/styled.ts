@@ -10,24 +10,32 @@ export const WrapperTable = styled.div`
   background-color: white;
   border-collapse: collapse;
   font-family: "Poppins", sans-serif;
-  padding: 16px;
-  margin: 70px 0 0 35px;
+  padding: 16px 0 16px 0;
+  margin: 10px 0 0 35px;
   border-top-left-radius: 11px;
   border-top-right-radius: 11px;
 `;
 
 export const TableHead = styled.thead`
   text-align: left;
-  font: Bold 12px/29px Poppins;
+  font: Bold 12px Poppins;
   letter-spacing: 0px;
   color: #b4c4d5;
-  border-bottom: 1px solid #00000029;
 `;
 
 export const TableH = styled.th`
-  padding: 10px 20px;
+  padding: 0 10px 13px 10px;
   white-space: nowrap;
   text-align: center;
+`;
+
+export const TableR = styled.tr`
+  &:nth-child(even) {
+    background: white;
+  }
+  &:nth-child(odd) {
+    background: #eff0f8;
+  }
 `;
 
 export const TableD = styled.td`
@@ -37,7 +45,7 @@ export const TableD = styled.td`
 export const ContentTableD = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: ${(props: { justify: string }) => props.justify || "center"};
   position: relative;
   padding: 10px 15px;
 
@@ -68,8 +76,9 @@ export const WrapperTitleSubTitle = styled.div`
 
 export const PictureGeneralProfile = styled.div`
   border-radius: 50px;
-  width: 41px;
-  height: 41px;
+  width: ${(props: { size?: string }) => (props.size === "medium" ? 40 : 30)}px;
+  height: ${(props: { size?: string }) =>
+    props.size === "medium" ? 40 : 30}px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -77,7 +86,8 @@ export const PictureGeneralProfile = styled.div`
   margin: 0 10px 0 0;
 
   & img {
-    width: 40px;
+    width: ${(props: { size?: string }) =>
+      props.size === "medium" ? 40 : 30}px;
     border-radius: 50%;
   }
 `;
@@ -105,32 +115,19 @@ export const TitleSubTitleCenter = styled.div`
 export const WindowGeneralPurpose = styled.div`
   display: none;
   position: absolute;
-  top: 55px;
-  left: 60px;
+  top: 60px;
+  left: -14px;
   min-width: 205px;
-  max-width: 205px;
-  min-height: 253px;
-  background: #ffffff 0% 0% no-repeat padding-box;
-  border: 1px solid #0144bf;
+  min-height: auto;
+  width: ${(props: { width?: number }) => `${props.width}px` || "auto"};
+  background: 0% 0% no-repeat padding-box;
+  background-color: ${(props: { light?: boolean }) =>
+    props.light ? "white" : "#13243b"};
   box-shadow: 0px 0px 12px #00000029;
-  border-radius: 5px;
+  border-radius: 8px;
   margin: 0 0 10px 0;
-  padding: 20px 0 0 10px;
+  padding: 17px 14px 14px 17px;
   z-index: 1;
-
-  &:after {
-    display: block;
-    content: " ";
-    position: absolute;
-    top: -9px;
-    left: 17px;
-    width: 15px;
-    height: 15px;
-    transform: rotateZ(45deg);
-    background-color: white;
-    border-top: 1px solid #0144bf;
-    border-left: 1px solid #0144bf;
-  }
 `;
 
 /**
@@ -244,9 +241,9 @@ export const ContentTags = styled.div`
   position: relative;
   width: 145px;
   height: 34px;
-  color: #858686;
+  color: #b4c4d5;
   overflow: hidden;
-  font-weight: 100;
+  font-weight: 400;
   font-size: 12px;
 `;
 

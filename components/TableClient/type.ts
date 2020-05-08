@@ -31,6 +31,7 @@ export interface ClientDataService {
   birthday: string;
   sex: string;
   nse: string;
+  verified: boolean;
 }
 
 export interface ClientDataModelService {
@@ -56,6 +57,7 @@ export interface ClientsData {
   birthday: string;
   sex: string;
   nse: string;
+  verified: boolean;
 }
 
 export interface ClientDataModel {

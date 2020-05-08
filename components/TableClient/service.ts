@@ -17,7 +17,7 @@ export const getDataClientsService = async (
     {
       filters: filters,
       page: 1,
-      limit: 5,
+      limit: 10,
     },
     {
       headers: {

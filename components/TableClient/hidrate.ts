@@ -38,6 +38,7 @@ export const GetClientsDataHidrate = ({
       birthday: item.birthday,
       sex: item.sex,
       nse: item.nse,
+      verified: item.verified,
     })),
     total: data.total,
     pages: data.pages,

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { WrapperTable, TableHead, TableH } from "../../styled";
+import { WrapperTable, TableHead, TableH, TableR } from "../../styled";
 
 interface Props {
   thead: Array<React.ReactNode>;
@@ -20,7 +20,7 @@ const TableGeneralPurpose: React.FunctionComponent<Props> = (props) => {
         </TableHead>
         <tbody>
           {props.tbody.map((item, key) => (
-            <tr key={`tbody-${key}`}>{item}</tr>
+            <TableR key={`tbody-${key}`}>{item}</TableR>
           ))}
         </tbody>
       </table>

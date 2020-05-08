@@ -6,11 +6,12 @@ interface Props {
   src: string;
   alt?: string;
   toolTitle?: string;
+  size?: "small" | "medium";
 }
 
 const PictureGeneral: React.FunctionComponent<Props> = (props) => {
   return (
-    <PictureGeneralProfile>
+    <PictureGeneralProfile size={props.size}>
       <img src={props.src} alt={props.alt} title={props.toolTitle} />
     </PictureGeneralProfile>
   );

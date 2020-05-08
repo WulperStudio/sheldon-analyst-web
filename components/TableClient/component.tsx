@@ -7,6 +7,9 @@ import { GetClientsData } from "./action";
 
 import { TableGeneralPurpose, CheckboxStandard, RowTable } from "./components";
 
+import * as Rocket from "@assets/rocket.svg";
+import * as Ellipsis from "@assets/ellipsis.svg";
+
 interface PropsMapState {
   isLoading: boolean;
   done: boolean;
@@ -41,11 +44,18 @@ const TableClients: React.FunctionComponent<Props> = (props) => {
   React.useEffect(() => {
     props.findClients();
   }, []);
-
-  console.log(props);
-
   return (
     <>
+      <div className="about-table">
+        <span>
+          <img className="icon-rocket" src={Rocket} />
+          12.587 prospects
+        </span>
+        <button>
+          <img src={Ellipsis} />
+          Sheet
+        </button>
+      </div>
       <TableGeneralPurpose
         thead={[
           <CheckboxStandard key={uid()} text="Select" size={15} />,
@@ -53,9 +63,12 @@ const TableClients: React.FunctionComponent<Props> = (props) => {
           <>Decision Market</>,
           <>Tags</>,
           <>Timeline</>,
-          <>Similars</>,
+          <span key={uid()} style={{ color: "#6D8492" }}>
+            Similars
+          </span>,
           <>Source</>,
           <>Purchases</>,
+          <>Functions</>,
         ]}
         tbody={props.data.clients.map((item) => (
           <RowTable key={uid()} {...item} />

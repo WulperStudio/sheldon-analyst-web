@@ -3,14 +3,17 @@ import React from "react";
 import { WindowGeneralPurpose } from "../../styled";
 
 interface Props {
-  size: number;
-  checked?: boolean;
-  text?: string;
+  width?: number;
+  light?: boolean;
 }
 
-const WindowGeneral: React.FunctionComponent<{}> = (props) => {
+const WindowGeneral: React.FunctionComponent<Props> = (props) => {
   return (
-    <WindowGeneralPurpose className="general-window">
+    <WindowGeneralPurpose
+      light={props.light}
+      width={props.width}
+      className="general-window"
+    >
       {props.children}
     </WindowGeneralPurpose>
   );

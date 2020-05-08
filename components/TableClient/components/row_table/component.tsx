@@ -1,4 +1,5 @@
 import React from "react";
+import { Steps } from "antd";
 
 import { ClientsData } from "../../type";
 
@@ -11,24 +12,39 @@ import {
 } from "../../styled";
 
 import {
+  IconRoundBorder,
+  TimeLineStatus,
+  TimeLineSubTitle,
+  WindowLineInfo,
+  TitleTags,
+  ListTags,
+} from "./styled";
+
+import {
   CheckboxStandard,
   TitleSubTitle,
   SimpleProfile,
-  CirclePlusBadge,
   PictureGeneral,
   WindowGeneral,
 } from "../";
 
 import RickProfile from "@assets/rick.jpg";
+import * as Ellipsis from "@assets/ellipsis.svg";
+import * as Icon3 from "@assets/icon-3.svg";
+import * as IconOk from "@assets/ok_icon.svg";
 
 interface Props extends ClientsData {
   anyx?: undefined;
 }
 
+const { Step } = Steps;
+
 const RowTable: React.FunctionComponent<Props> = (props) => {
-  let interests = props.interests.join("; ");
-  interests =
-    interests.length > 42 ? interests.substr(0, 42) + " ..." : interests;
+  const interestsRaw = props.interests.join("; ");
+  const interests =
+    interestsRaw.length > 42
+      ? interestsRaw.substr(0, 42) + " ..."
+      : interestsRaw;
   return (
     <>
       <TableD>
@@ -37,71 +53,56 @@ const RowTable: React.FunctionComponent<Props> = (props) => {
         </ContentTableD>
       </TableD>
       <TableD>
-        <ContentTableD>
+        <ContentTableD justify="flex-start">
+          <IconRoundBorder>
+            <img src={Icon3} />
+          </IconRoundBorder>
           <TitleSubTitle
             title={props.companyName}
             colorSubTitle="#0144bf"
             link={props.companySite}
             subTitle={props.companySite}
-            textCenter={true}
           />
           <WindowGeneral>
-            <div className="wrap-more-info">
-              <div className="line-info">
-                <span>Company:</span>
-                &nbsp;
+            <div>
+              <WindowLineInfo>
+                <span>Company</span>
                 <span>{props.companyName}</span>
-              </div>
-              <div className="line-info">
-                <span>Country:</span>
-                &nbsp;
+              </WindowLineInfo>
+              <WindowLineInfo>
+                <span>Country</span>
                 <span>{props.country}</span>
-              </div>
-              <div className="line-info">
-                <span>Site:</span>
-                &nbsp;
+              </WindowLineInfo>
+              <WindowLineInfo>
+                <span>Site</span>
                 <span>
                   <a href={props.companySite}>{props.companySite}</a>
                 </span>
-              </div>
-              <div className="line-info">
-                <span>Linkedin:</span>
-                &nbsp;
+              </WindowLineInfo>
+              <WindowLineInfo>
+                <span>Linkedin</span>
                 <span>
                   <a href={props.companyLinkedin}>Go to LinkedIn</a>
                 </span>
-              </div>
-              <div className="line-info">
-                <span>Size:</span>
-                &nbsp;
+              </WindowLineInfo>
+              <WindowLineInfo>
+                <span>Size</span>
                 <span>{props.companySize}</span>
-              </div>
-              <div className="line-info">
-                <span>Sector:</span>
-                &nbsp;
+              </WindowLineInfo>
+              <WindowLineInfo>
+                <span>Sector</span>
                 <span>{props.companySector}</span>
-              </div>
-              <div className="line-info">
-                <span>Products:</span>
-                &nbsp;
-                <span>{props.companyProducts}</span>
-              </div>
-              <div className="line-info">
-                <span>Similars:</span>
-                &nbsp;
+              </WindowLineInfo>
+              <WindowLineInfo>
+                <span>Account</span>
                 <span></span>
-              </div>
-              <div className="line-info">
-                <span>Account:</span>
-                &nbsp;
-                <span></span>
-              </div>
+              </WindowLineInfo>
             </div>
           </WindowGeneral>
         </ContentTableD>
       </TableD>
       <TableD>
-        <ContentTableD>
+        <ContentTableD justify="flex-start">
           <SimpleProfile
             src={RickProfile}
             alt="Decision Market"
@@ -110,49 +111,37 @@ const RowTable: React.FunctionComponent<Props> = (props) => {
             subTitle={`${props.area} ${props.position}`}
           />
           <WindowGeneral>
-            <div className="wrap-more-info">
-              <div className="line-info">
+            <div>
+              <WindowLineInfo>
                 <span>Name:</span>
-                &nbsp;
                 <span>{`${props.name} ${props.lastName}`}</span>
-              </div>
-              <div className="line-info">
+              </WindowLineInfo>
+              <WindowLineInfo>
                 <span>Position:</span>
-                &nbsp;
                 <span>{`${props.area} ${props.position}`}</span>
-              </div>
-              <div className="line-info">
+              </WindowLineInfo>
+              <WindowLineInfo>
                 <span>Linkedin:</span>
-                &nbsp;
                 <span>
                   <a href={props.linkedinUrl}>Go to LinkedIn</a>
                 </span>
-              </div>
-              <div className="line-info">
+              </WindowLineInfo>
+              <WindowLineInfo>
                 <span>Birthday:</span>
-                &nbsp;
                 <span>{props.birthday}</span>
-              </div>
-              <div className="line-info">
-                <span>Interests:</span>
-                &nbsp;
-                <span>{interests}</span>
-              </div>
-              <div className="line-info">
+              </WindowLineInfo>
+              <WindowLineInfo>
                 <span>Age:</span>
-                &nbsp;
                 <span></span>
-              </div>
-              <div className="line-info">
+              </WindowLineInfo>
+              <WindowLineInfo>
                 <span>Sex:</span>
-                &nbsp;
                 <span>{props.sex}</span>
-              </div>
-              <div className="line-info">
+              </WindowLineInfo>
+              <WindowLineInfo>
                 <span>NSE:</span>
-                &nbsp;
                 <span>{props.nse}</span>
-              </div>
+              </WindowLineInfo>
             </div>
           </WindowGeneral>
         </ContentTableD>
@@ -162,42 +151,103 @@ const RowTable: React.FunctionComponent<Props> = (props) => {
           <ContentTags>
             <span>{interests}</span>
           </ContentTags>
+          <WindowGeneral>
+            <div>
+              <TitleTags>Tags</TitleTags>
+              <ListTags>{interestsRaw}</ListTags>
+            </div>
+          </WindowGeneral>
         </ContentTableD>
       </TableD>
       <TableD>
         <ContentTableD>
-          <CirclePlusBadge
-            items={[
-              {
-                text: "AP",
-                color: "#FF6B81",
-                background: "#E80D0D19",
-                isBadge: true,
-                colorBadge: "#FF6B81",
-              },
-              {
-                text: "IN",
-                color: "#C7C241",
-                background: "#FAC10536",
-                isBadge: true,
-                colorBadge: "#88E278",
-              },
-              {
-                text: "QU",
-                color: "#60C741",
-                background: "#50B72236",
-                isBadge: true,
-                colorBadge: "#88E278",
-              },
-              {
-                text: "DE",
-                color: "#414BC7",
-                background: "#1C3DC636",
-                isBadge: true,
-                colorBadge: "#88E278",
-              },
-            ]}
-          />
+          <div>
+            <TimeLineStatus pending={props.verified}>
+              {props.verified ? (
+                <span>Validated</span>
+              ) : (
+                <span>Need validation</span>
+              )}
+            </TimeLineStatus>
+            <TimeLineSubTitle>108 updates</TimeLineSubTitle>
+          </div>
+          <WindowGeneral light={true} width={311}>
+            <Steps
+              className="timeline-sheet"
+              progressDot
+              current={0}
+              direction="vertical"
+            >
+              <Step
+                className="check"
+                title={
+                  <>
+                    <div className="title-timeline-sheet">
+                      Pending validation
+                    </div>
+                  </>
+                }
+                description={
+                  <>
+                    <div className="desc-timeline-sheet">
+                      Analyst - fdiaz@imsheldon.com
+                    </div>
+                    <div className="date-timeline-sheet">March 05</div>
+                  </>
+                }
+              />
+              <Step
+                className="check"
+                title={
+                  <div className="title-timeline-sheet">
+                    Change phone &nbsp;
+                    <span className="link">+54 341 6758 9285</span>
+                  </div>
+                }
+                description={
+                  <>
+                    <div className="desc-timeline-sheet">
+                      Analyst - fdiaz@imsheldon.com
+                    </div>
+                    <div className="date-timeline-sheet">March 05</div>
+                  </>
+                }
+              />
+              <Step
+                title={
+                  <div className="title-timeline-sheet">
+                    Add decision maker &nbsp;
+                    <span className="link">#CFO</span>
+                  </div>
+                }
+                description={
+                  <>
+                    <div className="desc-timeline-sheet">
+                      User - facundo@proglobal.com
+                    </div>
+                    <div className="date-timeline-sheet">March 05</div>
+                  </>
+                }
+                icon={<img src={IconOk} alt="" />}
+              />
+              <Step
+                title={
+                  <div className="title-timeline-sheet">
+                    Delete contact &nbsp;
+                    <span className="link">#Restore</span>
+                  </div>
+                }
+                description={
+                  <>
+                    <div className="desc-timeline-sheet">
+                      Analyst - fdiaz@imsheldon.com
+                    </div>
+                    <div className="date-timeline-sheet">March 05</div>
+                  </>
+                }
+              />
+            </Steps>
+          </WindowGeneral>
         </ContentTableD>
       </TableD>
       <TableD>
@@ -207,16 +257,19 @@ const RowTable: React.FunctionComponent<Props> = (props) => {
               src={RickProfile}
               alt="Similar"
               toolTitle="Similar"
+              size="medium"
             />
             <PictureGeneral
               src={RickProfile}
               alt="Similar"
               toolTitle="Similar"
+              size="medium"
             />
             <PictureGeneral
               src={RickProfile}
               alt="Similar"
               toolTitle="Similar"
+              size="medium"
             />
             <SuperBadgeItem>+429</SuperBadgeItem>
           </WrapperSimilars>
@@ -242,6 +295,12 @@ const RowTable: React.FunctionComponent<Props> = (props) => {
           />
         </ContentTableD>
       </TableD>
+      <TableD>
+        <ContentTableD>
+          <img src={Ellipsis} />
+        </ContentTableD>
+      </TableD>
+      <TableD style={{ width: "100%" }}></TableD>
     </>
   );
 };

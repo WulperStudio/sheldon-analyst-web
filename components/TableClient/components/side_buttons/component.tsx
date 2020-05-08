@@ -8,7 +8,9 @@ import * as Icon3 from "@assets/icon-3.svg";
 const SideButtons: React.FunctionComponent<{}> = () => {
   return (
     <WrapperButons>
-      <ButtonGeneralComponent icon={Icon3}>Tracsa</ButtonGeneralComponent>
+      <ButtonGeneralComponent color="#343536" icon={Icon3}>
+        Tracsa
+      </ButtonGeneralComponent>
       <ButtonGeneralComponent icon={Icon3}>
         Search countries
       </ButtonGeneralComponent>
@@ -29,7 +31,7 @@ const SideButtons: React.FunctionComponent<{}> = () => {
         icon={Icon3}
       ></ButtonGeneralComponent>
       <ButtonGeneralComponent width={143} icon={Icon3}>
-        Tracsa
+        Order by
       </ButtonGeneralComponent>
     </WrapperButons>
   );
