@@ -1,7 +1,7 @@
 import React from "react";
 import { connect, ConnectedProps } from "react-redux";
 
-import LayoutGeneric from "../layout/generic";
+import { LayoutGeneric } from "../layout";
 import {
   FormClient,
   RxStatusLoginSession,

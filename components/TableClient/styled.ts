@@ -5,16 +5,15 @@ import styled from "styled-components";
  */
 
 export const WrapperTable = styled.div`
-  position: absolute;
-  top: 125px;
+  width: calc(100% - 50px);
+  height: 935px;
   background-color: white;
   border-collapse: collapse;
-  box-shadow: 0px 3px 6px #00000029;
-  border-radius: 11px;
   font-family: "Poppins", sans-serif;
   padding: 16px;
-  margin: auto;
-  zoom: 0.9;
+  margin: 70px 0 0 35px;
+  border-top-left-radius: 11px;
+  border-top-right-radius: 11px;
 `;
 
 export const TableHead = styled.thead`
@@ -26,14 +25,13 @@ export const TableHead = styled.thead`
 `;
 
 export const TableH = styled.th`
-  /* border: 1px solid black; */
   padding: 10px 20px;
   white-space: nowrap;
   text-align: center;
 `;
 
 export const TableD = styled.td`
-  /* padding: 20px 10px; */
+  height: 70px;
 `;
 
 export const ContentTableD = styled.div`

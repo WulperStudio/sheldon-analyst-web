@@ -8,7 +8,7 @@ interface Props {
   background?: string;
 }
 
-const LayoutGeneric: React.FunctionComponent<Props> = (props) => {
+export const LayoutGeneric: React.FunctionComponent<Props> = (props) => {
   return (
     <Layout>
       <Header>
@@ -31,5 +31,3 @@ const LayoutGeneric: React.FunctionComponent<Props> = (props) => {
     </Layout>
   );
 };
-
-export default LayoutGeneric;

@@ -3,7 +3,7 @@ import { connect, ConnectedProps } from "react-redux";
 import { Button } from "antd";
 import Link from "next/link";
 
-import LayoutGeneric from "../layout/generic";
+import { LayoutGeneric } from "../layout";
 
 import {
   Login,

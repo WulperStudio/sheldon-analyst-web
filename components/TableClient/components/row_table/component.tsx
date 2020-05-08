@@ -136,7 +136,7 @@ const RowTable: React.FunctionComponent<Props> = (props) => {
               <div className="line-info">
                 <span>Interests:</span>
                 &nbsp;
-                <span>{props.interests}</span>
+                <span>{interests}</span>
               </div>
               <div className="line-info">
                 <span>Age:</span>

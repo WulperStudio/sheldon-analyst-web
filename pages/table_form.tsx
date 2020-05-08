@@ -1,7 +1,7 @@
 import React from "react";
 import { connect, ConnectedProps } from "react-redux";
 
-import LayoutGeneric from "../layout/generic";
+import { LayoutClear } from "../layout";
 
 import { TableClients } from "../components/TableClient";
 
@@ -11,9 +11,9 @@ type Props = ConnectedProps<typeof connector>;
 
 const TableContactsPage: React.FunctionComponent<Props> = () => {
   return (
-    <LayoutGeneric background="#F1F4F9">
+    <LayoutClear>
       <TableClients />
-    </LayoutGeneric>
+    </LayoutClear>
   );
 };
 
