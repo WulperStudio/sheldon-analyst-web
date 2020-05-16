@@ -25,18 +25,6 @@ const SideBarButtons: React.FunctionComponent<{}> = () => {
         <BtnItemSide>
           <img src={Icon2} alt="" />
         </BtnItemSide>
-        <BtnItemSide margin="80px 0 0 0">
-          <img src={Icon2} alt="" />
-        </BtnItemSide>
-        <BtnItemSide>
-          <img src={Icon2} alt="" />
-        </BtnItemSide>
-        <BtnItemSide>
-          <img src={Icon2} alt="" />
-        </BtnItemSide>
-        <BtnItemSide margin="80px 0 0 0">
-          <img src={Icon2} alt="" />
-        </BtnItemSide>
       </WrapperBtnSections>
     </>
   );

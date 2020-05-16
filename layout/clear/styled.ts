@@ -7,4 +7,5 @@ export const ContentMain = styled.div`
   align-items: flex-start;
   width: 100%;
   min-height: calc(100vh - 0px);
+  margin: 0 0 0 70px;
 `;

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const WrapperLogoAside = styled.div`
   & img {
-    width: 90px;
+    width: 70px;
   }
 `;
 
@@ -19,8 +19,8 @@ export const BtnItemSide = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 90px;
-  height: 90px;
+  width: 70px;
+  height: 70px;
   background-color: ${(props: { active?: boolean }) =>
     props.active ? "white" : "#004da9"};
   border: 0;

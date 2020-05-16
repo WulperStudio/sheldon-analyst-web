@@ -7,6 +7,7 @@ interface Props {
   width?: number;
   center?: boolean;
   color?: string;
+  active?: boolean;
 }
 
 const ButtonGeneralComponent: React.FunctionComponent<Props> = (props) => {
@@ -15,6 +16,7 @@ const ButtonGeneralComponent: React.FunctionComponent<Props> = (props) => {
       width={props.width}
       center={props.center}
       color={props.color}
+      active={props.active}
     >
       {props.icon ? <img src={props.icon} /> : null}
       {props.children}

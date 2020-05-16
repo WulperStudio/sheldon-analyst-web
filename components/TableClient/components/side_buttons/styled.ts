@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const WrapperButons = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  padding: 15px 35px 15px 35px;
+  justify-content: flex-start;
+  padding: 15px 23px 15px 23px;
+  margin: 0 0 0 0;
 `;

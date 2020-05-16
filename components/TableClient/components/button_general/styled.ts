@@ -1,22 +1,29 @@
 import styled from "styled-components";
 
 export const ButtonGeneral = styled.button`
-  width: ${(props: { width?: number }) => props.width || 214}px;
-  height: 45px;
+  width: ${(props: { width?: number }) => props.width || 130}px;
+  height: 40px;
   text-align: start;
-  padding: 9px 0 13px 22px;
+  padding: 10px 0 12px 20px;
   cursor: pointer;
-  background: #ffffff 0% 0% no-repeat padding-box;
-  box-shadow: 0px 2px 3px #00000029;
-  border-radius: 9px;
+  background: #f9f9f9;
+  border-radius: 5px;
+  ${(props: { active?: boolean }) =>
+    props.active &&
+    `
+    box-shadow: 3px 1px 10px #aec2ea;
+  `}
   border: 0;
   text-align: left;
-  font: SemiBold 14px/44px Poppins;
+  font-size: 12px;
+  font-family: "Poppins", sans-serif;
   letter-spacing: 0px;
-  color: ${(props: { color?: string }) => props.color || "#b4c4d5"};
-  line-height: 24px;
-  font-weight: 600;
+  color: ${(props: { color?: string }) => props.color || "black"};
+  font-weight: 400;
   outline: none;
+  font-size: 12px;
+  line-height: 18px;
+  margin: 0 14px 0 0;
 
   ${(props: { center: boolean }) =>
     props.center
@@ -28,7 +35,7 @@ export const ButtonGeneral = styled.button`
 
   & img {
     margin: 0 10px 0 0;
-    width: 15px;
+    width: 20px;
     height: 20px;
   }
 `;

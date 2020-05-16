@@ -5,15 +5,16 @@ import styled from "styled-components";
  */
 
 export const WrapperTable = styled.div`
-  width: calc(100% - 50px);
-  height: 935px;
+  position: relative;
   background-color: white;
   border-collapse: collapse;
   font-family: "Poppins", sans-serif;
   padding: 16px 0 16px 0;
-  margin: 10px 0 0 35px;
+  margin: 10px 20px 0 20px;
   border-top-left-radius: 11px;
   border-top-right-radius: 11px;
+
+  margin: 150px 0 0 25px;
 `;
 
 export const TableHead = styled.thead`
