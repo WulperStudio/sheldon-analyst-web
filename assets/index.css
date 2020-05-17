@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;500;700&display=swap");
 
 .ant-layout {
   background-color: white;
@@ -77,7 +77,10 @@
   padding: 6px 0 0 9px;
 }
 
-.form-clients .standard-item .select-standard-with-icon div.ant-select-selector {
+.form-clients
+  .standard-item
+  .select-standard-with-icon
+  div.ant-select-selector {
   padding: 6px 0 0 33px;
 }
 
@@ -109,7 +112,7 @@
   font-size: 12px;
 }
 
-  /* TWINS */
+/* TWINS */
 
 .form-clients .standard-item.twins-first {
   display: flex;
@@ -145,7 +148,11 @@
   height: 43px;
 }
 
-.form-clients .standard-item .input-text.phone-input .ant-select-selection-search input {
+.form-clients
+  .standard-item
+  .input-text.phone-input
+  .ant-select-selection-search
+  input {
   height: 30px;
 }
 
@@ -164,8 +171,8 @@
   max-width: 70px !important;
   min-width: 70px !important;
   height: 1080px;
-  background-color: #004DA9;
-  z-index: 2;
+  background-color: #004da9;
+  z-index: 4;
 }
 
 .wrapper-btn-sections {
@@ -179,12 +186,11 @@
   align-items: center;
   width: 90px;
   height: 90px;
-  background-color: #004DA9;
+  background-color: #004da9;
   border: 0;
   cursor: pointer;
   outline: none;
 }
-
 
 /* TIMELINE */
 
@@ -210,7 +216,7 @@
   width: 15px !important;
   height: 15px !important;
   background-color: white !important;
-  border: 2px solid #70A1FF !important;
+  border: 2px solid #70a1ff !important;
 }
 
 .timeline-sheet .check .ant-steps-icon-dot {
@@ -237,19 +243,19 @@
 }
 
 .timeline-sheet .title-timeline-sheet .link {
-  color: #70A1FF;
+  color: #70a1ff;
 }
 
 .timeline-sheet .desc-timeline-sheet {
-  color: #B3B3B3;
+  color: #b3b3b3;
   white-space: nowrap;
   font-size: 12px;
-  font-weight: 400
+  font-weight: 400;
 }
 
 .timeline-sheet .date-timeline-sheet {
   font-size: 10px;
-  color: #004DA9;
+  color: #004da9;
   font-weight: 500;
 }
 
@@ -268,12 +274,12 @@
   justify-content: space-between;
   align-items: center;
   height: 35px;
-  width: calc(100% - 304px);
+  width: calc(100% - 115px);
   margin: 25px 0 0 20px;
 }
 .about-table .icon-rocket {
   width: 19px;
-  border: 1px solid #FF6B81;
+  border: 1px solid #ff6b81;
   padding: 3px;
   border-radius: 50%;
   margin: 0 5px 0 5px;
@@ -285,7 +291,7 @@
 .about-table button {
   width: 114px;
   height: 35px;
-  border: 1px solid #A8B4C5;
+  border: 1px solid #a8b4c5;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -299,34 +305,38 @@
   line-height: 18px;
 }
 .about-table button:first-child {
-  background-color: #0A50A6;
-  box-shadow: 2px 2px 5px #D9D9D9;
-  color: #FFFFFF;
+  background-color: #0a50a6;
+  box-shadow: 2px 2px 5px #d9d9d9;
+  color: #ffffff;
   font-weight: 500;
   margin: 0 13px 0 0;
 }
 .about-table .wrapper-list-btn button {
-  background: #1890FF;
+  background: #1890ff;
   border-radius: 4px;
   margin-right: 0;
   font-size: 12px;
   line-height: 18px;
   color: #000000;
 }
+
+.about-table .wrapper-list-btn button:focus ~ .list {
+  display: block;
+}
+
 .about-table .wrapper-list-btn .list {
-    display: block;
-    position: absolute;
-    background-color: white;
-    width: 114px;
-    box-shadow: 3px 3px 3px rgba(180, 180, 180, 0.25);
-    border-radius: 5px;
-    z-index: 1;
+  display: none;
+  position: absolute;
+  background-color: white;
+  width: 114px;
+  box-shadow: 3px 3px 3px rgba(180, 180, 180, 0.25);
+  border-radius: 5px;
+  z-index: 1;
 }
 .about-table .wrapper-list-btn .list div {
   padding: 9px 0;
   text-align: center;
   cursor: pointer;
-
 }
 .about-table .wrapper-list-btn .list div:nth-child(even) {
   background: white;
@@ -338,7 +348,9 @@
   border-radius: 5px;
 }
 
-
+table {
+  margin: 0 23px 0 0;
+}
 table:first-child {
   position: fixed;
   top: 150px;
@@ -349,7 +361,6 @@ table:first-child {
 table:first-child thead {
   background-color: white;
   border: 1px solid transparent;
-
 }
 table:first-child thead th {
   padding-top: 7px;
@@ -374,14 +385,30 @@ table:first-child tbody td * {
   padding-bottom: 0;
 }
 table:last-child {
-    background-color: white;
+  background-color: white;
 }
 table:last-child thead {
   visibility: hidden;
-
 }
 table:last-child thead th {
   padding-bottom: 0;
   line-height: 0;
   visibility: hidden;
+}
+
+.trap-table-margins {
+  position: fixed;
+  top: 0;
+  width: 25px;
+  height: 100%;
+  background-color: #f0f2f5;
+  z-index: 4;
+}
+
+.trap-table-margins.ttm-left {
+  left: 70px;
+}
+
+.trap-table-margins.ttm-right {
+  right: 0;
 }

@@ -18,6 +18,7 @@ const GlobalStyle = createGlobalStyle`
         padding: 0;
         color: #000;
         overflow: scroll;
+        width: 1587px;
     }
 `;
 
