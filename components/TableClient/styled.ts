@@ -17,14 +17,9 @@ export const WrapperTable = styled.div`
   margin: 150px 0 0 25px;
 `;
 
-export const TableAbsolute = styled.table`
-  left: ${(props: { left?: number }) => props.left || 95}px;
-`;
+export const TableAbsolute = styled.table``;
 
-export const TableRelative = styled.table`
-  position: static;
-  left: ${(props: { left?: number }) => props.left || 0}px;
-`;
+export const TableRelative = styled.table``;
 
 export const TableHead = styled.thead`
   text-align: left;

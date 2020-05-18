@@ -348,54 +348,60 @@
   border-radius: 5px;
 }
 
+body > .table-header {
+  display: block;
+}
 table {
   margin: 0 23px 0 0;
 }
-table:first-child {
-  position: fixed;
-  top: 150px;
+.table-header {
+  display: none;
+  position: sticky;
+  bottom: 433px;
+  margin: 0 0 0 95px;
   background-color: #f0f2f5;
   border-color: white;
   z-index: 3;
 }
-table:first-child thead {
+.table-header thead {
   background-color: white;
   border: 1px solid transparent;
 }
-table:first-child thead th {
+.table-header thead th {
   padding-top: 7px;
 }
-table:first-child thead th:first-child {
+.table-header thead th:first-child {
   border-top-left-radius: 11px;
 }
-table:first-child thead th:last-child {
+.table-header thead th:last-child {
   border-top-right-radius: 11px;
 }
-table:first-child tbody {
+.table-header tbody {
   visibility: hidden;
 }
-table:first-child tbody td {
+.table-header tbody td {
   height: 0;
   padding-top: 0;
   padding-bottom: 0;
 }
-table:first-child tbody td * {
+.table-header tbody td * {
   height: 0;
   padding-top: 0;
   padding-bottom: 0;
 }
-table:last-child {
+.table-body {
   background-color: white;
 }
-table:last-child thead {
+.table-body thead {
   visibility: hidden;
 }
-table:last-child thead th {
-  padding-bottom: 0;
+.table-body thead th {
   line-height: 0;
+  height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
   visibility: hidden;
 }
-
 .trap-table-margins {
   position: fixed;
   top: 0;
@@ -404,11 +410,9 @@ table:last-child thead th {
   background-color: #f0f2f5;
   z-index: 4;
 }
-
 .trap-table-margins.ttm-left {
   left: 70px;
 }
-
 .trap-table-margins.ttm-right {
   right: 0;
 }

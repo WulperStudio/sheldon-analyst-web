@@ -15,22 +15,24 @@ interface Props {
 }
 
 const TableGeneralPurpose: React.FunctionComponent<Props> = (props) => {
-  const [hozScroll, setHozScroll] = React.useState<number | undefined>(
-    undefined
-  );
-  if (process.browser) {
-    window.addEventListener("scroll", () => {
-      const hoz = window.scrollX;
-      setHozScroll(95 - hoz);
-    });
-  }
+  const [refTable, setRefTable] = React.useState<Node | undefined>(undefined);
+
+  React.useEffect(() => {
+    if (process.browser && refTable) {
+      // document.body.prepend(refTable);
+      document.body.appendChild(refTable);
+    }
+  }, [refTable]);
 
   return (
     <>
       <div className="trap-table-margins ttm-left"></div>
       <div className="trap-table-margins ttm-right"></div>
       <WrapperTable>
-        <TableAbsolute left={hozScroll}>
+        <TableAbsolute
+          className="table-header"
+          ref={(ref: Node) => setRefTable(ref)}
+        >
           <TableHead>
             <tr>
               {props.thead.map((item, key) => (
@@ -44,7 +46,7 @@ const TableGeneralPurpose: React.FunctionComponent<Props> = (props) => {
             ))}
           </tbody>
         </TableAbsolute>
-        <TableRelative left={hozScroll}>
+        <TableRelative className="table-body">
           <TableHead>
             <tr>
               {props.thead.map((item, key) => (

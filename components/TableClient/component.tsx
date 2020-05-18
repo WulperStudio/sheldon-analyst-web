@@ -46,10 +46,14 @@ const TableClients: React.FunctionComponent<Props> = (props) => {
       <TableGeneralPurpose
         thead={[
           <CheckboxStandard key={uid()} text="Select" size={15} />,
-          <>Company</>,
+          <div key={uid()} style={{ width: "216px" }}>
+            Company
+          </div>,
           <>Decision Market</>,
           <>Tags</>,
-          <>Timeline</>,
+          <div key={uid()} style={{ width: "122px" }}>
+            Timeline
+          </div>,
           <span key={uid()} style={{ color: "#6D8492" }}>
             Similars
           </span>,
