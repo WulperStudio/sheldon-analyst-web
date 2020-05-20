@@ -13,8 +13,7 @@ export const WrapperTable = styled.div`
   margin: 10px 20px 0 20px;
   border-top-left-radius: 11px;
   border-top-right-radius: 11px;
-
-  margin: 150px 0 0 25px;
+  margin: 118px 0 0 25px;
 `;
 
 export const TableAbsolute = styled.table``;

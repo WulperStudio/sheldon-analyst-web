@@ -354,14 +354,15 @@ body > .table-header {
 table {
   margin: 0 23px 0 0;
 }
-.table-header {
-  display: none;
+#table-header-content {
   position: sticky;
-  bottom: 433px;
+  top: 150px;
+  z-index: 3;
+}
+.table-header {
   margin: 0 0 0 95px;
   background-color: #f0f2f5;
   border-color: white;
-  z-index: 3;
 }
 .table-header thead {
   background-color: white;
@@ -414,5 +415,5 @@ table {
   left: 70px;
 }
 .trap-table-margins.ttm-right {
-  right: 0;
+  right: -2px;
 }

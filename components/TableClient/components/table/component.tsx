@@ -19,8 +19,7 @@ const TableGeneralPurpose: React.FunctionComponent<Props> = (props) => {
 
   React.useEffect(() => {
     if (process.browser && refTable) {
-      // document.body.prepend(refTable);
-      document.body.appendChild(refTable);
+      document.getElementById("table-header-content")?.appendChild(refTable);
     }
   }, [refTable]);
 
