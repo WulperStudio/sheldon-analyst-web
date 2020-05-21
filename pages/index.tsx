@@ -66,6 +66,10 @@ const Home: React.FunctionComponent<Props> = (props) => {
             <Link href="/table_form">
               <a>Table Form</a>
             </Link>
+            &nbsp;&nbsp;&nbsp;
+            <Link href="/upload_csv">
+              <a>Upload CSV</a>
+            </Link>
           </div>
         </>
       )}
