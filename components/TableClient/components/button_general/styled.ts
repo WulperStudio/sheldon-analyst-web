@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const ButtonGeneral = styled.button`
+  position: relative;
   width: ${(props: { width?: number }) => props.width || 130}px;
   height: 40px;
   text-align: start;
@@ -23,7 +24,7 @@ export const ButtonGeneral = styled.button`
   outline: none;
   font-size: 12px;
   line-height: 18px;
-  margin: 0 14px 0 0;
+  margin: 0 14px 0 5px;
 
   ${(props: { center: boolean }) =>
     props.center
@@ -37,5 +38,14 @@ export const ButtonGeneral = styled.button`
     margin: 0 10px 0 0;
     width: 20px;
     height: 20px;
+  }
+
+  &:focus {
+    ${(props: { focusActive?: boolean }) =>
+      props.focusActive ? "box-shadow: 3px 1px 10px #aec2ea;" : ""}
+  }
+
+  &:focus-within .active-for-focus-btn {
+    display: block;
   }
 `;

@@ -417,3 +417,11 @@ table {
 .trap-table-margins.ttm-right {
   right: -2px;
 }
+
+.select-multi-filter-table {
+  width: 100%;
+  border: 0;
+}
+.select-multi-filter-table > div{
+  border: 0 !important;
+}

@@ -2,6 +2,9 @@ import {
   LOADING_CLIENTS_DATA,
   SUCCESS_CLIENTS_DATA,
   FAIL_CLIENTS_DATA,
+  SUBMIT_GET_FILTERS,
+  SUCCESS_GET_FILTERS,
+  FAIL_GET_FILTERS,
   StatusDataClient,
   ActionDataClient,
 } from "./type";
@@ -17,6 +20,16 @@ export const initialState = (): StatusDataClient => ({
     isLoading: false,
     done: false,
     fail: false,
+  },
+  genealFilters: {
+    potentialSize: [],
+    interests: [],
+    companySector: [],
+    companyArea: [],
+    companyPosition: [],
+    companyProducts: [],
+    nse: [],
+    isLoading: false,
   },
 });
 
@@ -57,6 +70,30 @@ export const ClientDataReducer = (
           done: false,
           fail: true,
         },
+      };
+    case SUBMIT_GET_FILTERS:
+      return {
+        ...state,
+        genealFilters: {
+          ...state.genealFilters,
+          isLoading: true,
+        },
+      };
+    case SUCCESS_GET_FILTERS:
+      return {
+        ...state,
+        genealFilters: {
+          ...action.payload,
+          isLoading: false,
+        }
+      };
+    case FAIL_GET_FILTERS:
+      return {
+        ...state,
+        genealFilters: {
+          ...state.genealFilters,
+          isLoading: false,
+        }
       };
     default:
       return state;

@@ -1,7 +1,16 @@
 import axios from "axios";
 import getConfig from "next/config";
-import { Filters, AttributeResponse, ClientDataModel } from "./type";
-import { FiltersHidrate, GetClientsDataHidrate } from "./hidrate";
+import {
+  Filters,
+  AttributeResponse,
+  ClientDataModel,
+  GeneralFiltersModel,
+} from "./type";
+import {
+  FiltersHidrate,
+  GetClientsDataHidrate,
+  successGetFiltersHidrate,
+} from "./hidrate";
 
 const {
   publicRuntimeConfig: { API_ANALYST },
@@ -26,4 +35,19 @@ export const getDataClientsService = async (
     }
   );
   return GetClientsDataHidrate(response);
+};
+
+export const getFiltersService = async (
+  token: string
+): Promise<GeneralFiltersModel> => {
+  const response = await axios.post<AttributeResponse>(
+    `${API_ANALYST}/get_general_contact_info`,
+    {},
+    {
+      headers: {
+        Authorization: token,
+      },
+    }
+  );
+  return successGetFiltersHidrate(response);
 };

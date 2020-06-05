@@ -8,6 +8,7 @@ interface Props {
   center?: boolean;
   color?: string;
   active?: boolean;
+  focusActive?: boolean;
 }
 
 const ButtonGeneralComponent: React.FunctionComponent<Props> = (props) => {
@@ -17,6 +18,7 @@ const ButtonGeneralComponent: React.FunctionComponent<Props> = (props) => {
       center={props.center}
       color={props.color}
       active={props.active}
+      focusActive={props.focusActive}
     >
       {props.icon ? <img src={props.icon} /> : null}
       {props.children}

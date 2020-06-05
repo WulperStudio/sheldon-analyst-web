@@ -89,20 +89,59 @@ interface EventFailClientData {
 }
 
 /**
+ * Filters
+ */
+
+export const SUBMIT_GET_FILTERS = "SUBMIT_GET_FILTERS";
+export const SUCCESS_GET_FILTERS = "SUCCESS_GET_FILTERS";
+export const FAIL_GET_FILTERS = "FAIL_GET_FILTERS";
+
+export interface GeneralFiltersModel {
+  potentialSize: Array<string>;
+  interests: Array<string>;
+  companySector: Array<string>;
+  companyArea: Array<string>;
+  companyPosition: Array<string>;
+  companyProducts: Array<string>;
+  nse: Array<string>;
+}
+
+export interface GeneralFiltersState extends GeneralFiltersModel {
+  isLoading: boolean;
+}
+
+interface EventSubmitFilter {
+  type: typeof SUBMIT_GET_FILTERS;
+}
+
+interface EventSuccessFilter {
+  type: typeof SUCCESS_GET_FILTERS;
+  payload: GeneralFiltersModel;
+}
+
+interface EventFailFilter {
+  type: typeof FAIL_GET_FILTERS;
+}
+
+/**
  * General Status
  */
 
 export interface StatusDataClient {
   clientData: StateClientData;
+  genealFilters: GeneralFiltersState;
 }
 
 export type ActionDataClient =
   | EventLoadingClientData
   | EventSuccessClientData
-  | EventFailClientData;
+  | EventFailClientData
+  | EventSubmitFilter
+  | EventSuccessFilter
+  | EventFailFilter;
 
 export type AttributeResponse = {
-  data: ClientDataModelService;
+  data: ClientDataModelService | GeneralFiltersModel;
 };
 
 export interface RxStatusDataClient {

@@ -31,16 +31,6 @@ up: ## Run Container Production
 	node:latest \
 	npm run start
 
-up-dev: ## Run Container Development (daemon)
-	docker run -d --rm \
-	--name=${PROJECT_NAME}-dev \
-	-p 3001:3000 \
-	-v ${PWD}:/var/app \
-	-w /var/app \
-	--env-file=${PWD}/.env \
-	node:latest \
-	npm run dev
-
 up-it-dev: ## Run Container Development (iterative)
 	docker run -it --rm \
 	--name=${PROJECT_NAME}-dev \

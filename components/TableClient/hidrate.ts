@@ -5,6 +5,8 @@ import {
   Filters,
   ClientDataModel,
   ClientsData,
+  ClientDataModelService,
+  GeneralFiltersModel,
 } from "./type";
 
 export const FiltersHidrate = (filters: Filters): Filters => {
@@ -20,6 +22,7 @@ export const FiltersHidrate = (filters: Filters): Filters => {
 export const GetClientsDataHidrate = ({
   data: { data },
 }: AxiosResponse<AttributeResponse>): ClientDataModel => {
+  data = data as ClientDataModelService;
   return {
     clients: data.contacts.map<ClientsData>((item) => ({
       companyName: item.company_name,
@@ -42,5 +45,20 @@ export const GetClientsDataHidrate = ({
     })),
     total: data.total,
     pages: data.pages,
+  };
+};
+
+export const successGetFiltersHidrate = ({
+  data: { data },
+}: AxiosResponse<AttributeResponse>): GeneralFiltersModel => {
+  data = data as GeneralFiltersModel;
+  return {
+    potentialSize: data.potentialSize,
+    interests: data.interests,
+    companySector: data.companySector,
+    companyArea: data.companyArea,
+    companyPosition: data.companyPosition,
+    companyProducts: data.companyProducts,
+    nse: data.nse,
   };
 };
