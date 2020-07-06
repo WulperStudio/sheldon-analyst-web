@@ -5,7 +5,7 @@ import { v4 as uid } from "uuid";
 const { Option } = Select;
 
 interface Props {
-  name: string;
+  name: string | Array<string>;
   data: Array<string>;
   placeholder: string;
   label?: string;

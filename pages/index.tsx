@@ -59,6 +59,10 @@ const Home: React.FunctionComponent<Props> = (props) => {
           </Button>
           <br />
           <div style={{ display: "flex" }}>
+            <Link href="/form_media">
+              <a>Form Media</a>
+            </Link>
+            &nbsp;&nbsp;&nbsp;
             <Link href="/form_client">
               <a>Form Client</a>
             </Link>

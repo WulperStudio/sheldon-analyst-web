@@ -71,9 +71,10 @@ export const StatusFormContent = styled.div`
 export const CloseDecisionMaker = styled.div`
   position: absolute;
   right: 27px;
-  top: 27px;
+  top: ${(props: { top?: number }) => props.top || 27}px;
   color: red;
   cursor: pointer;
+  z-index: 1;
 `;
 
 /**
