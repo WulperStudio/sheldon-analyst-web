@@ -1,9 +1,5 @@
 import React from "react";
 import { CloseSquareOutlined } from "@ant-design/icons";
-// import { connect, ConnectedProps } from "react-redux";
-
-// import { RxStatusFormClient, OpenGraphModel } from "../type";
-// import { submitOpenGraph } from "../action";
 
 import SimpleInputText from "../../../components/FormClient/section/components/simple_input_text";
 import SimpleSelect from "../../../components/FormClient/section/components/simple_select";
@@ -20,29 +16,6 @@ interface PropsParent {
   isClosing: boolean;
   groupName?: string;
 }
-
-// interface PropsMapState extends OpenGraphModel {
-//   potentialSize: Array<string>;
-// }
-
-// const mapState = (state: RxStatusFormClient): PropsMapState => {
-//   return {
-//     ...state.FormClientReducer.opg,
-//     potentialSize: state.FormClientReducer.genCInfo.potentialSize,
-//   };
-// };
-
-// const mapDispatch = (dispatch: Function) => {
-//   return {
-//     getOpG: (url: string) => {
-//       dispatch(submitOpenGraph(url));
-//     },
-//   };
-// };
-
-// const connector = connect(mapState, mapDispatch);
-
-// type Props = ConnectedProps<typeof connector>;
 
 const MediaFormats: React.FunctionComponent<PropsParent> = (props) => {
   return (
@@ -74,7 +47,5 @@ const MediaFormats: React.FunctionComponent<PropsParent> = (props) => {
     </>
   );
 };
-
-// export default connector(MediaFormats);
 
 export default MediaFormats;

@@ -1,4 +1,5 @@
 import React from "react";
+import { connect, ConnectedProps } from "react-redux";
 import { Form, Button } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import {
@@ -13,22 +14,34 @@ import Segmentation from "./segmentation";
 import AdvanceStatistics from "./advance_statistics";
 import DecisionMaker from "./decision_maker";
 
-// interface PropsMapState {
-// }
+import { RxStatusFormMedia, FormMediaModel } from "../type";
+import { loadFormMedia } from "../action";
+import { loadCodeNum } from "../../FormClient/action";
 
-// const mapState = (state: RxStatusFormClient): PropsMapState => {
-//   return {
-//   };
-// };
+interface PropsMapState {
+  sendStatus: number;
+}
 
-// const mapDispatch = (dispatch: Function) => {
-//   return {
-//   };
-// };
+const mapState = (state: RxStatusFormMedia): PropsMapState => {
+  return {
+    sendStatus: state.FormMediaReducer.statusRequest,
+  };
+};
 
-// const connector = connect(mapState, mapDispatch);
+const mapDispatch = (dispatch: Function) => {
+  return {
+    submitFormMedia: (form: FormMediaModel) => {
+      dispatch(loadFormMedia(form));
+    },
+    loadCodeNumFn: () => {
+      dispatch(loadCodeNum());
+    },
+  };
+};
 
-// type Props = ConnectedProps<typeof connector>;
+const connector = connect(mapState, mapDispatch);
+
+type Props = ConnectedProps<typeof connector>;
 
 const removeDecision = (
   decision: Array<number>,
@@ -53,9 +66,13 @@ const validateMessages = {
   },
 };
 
-const FormClient: React.FunctionComponent<{}> = () => {
+const FormClient: React.FunctionComponent<Props> = (props) => {
   const [decision, setDecision] = React.useState<Array<number>>([]);
   const [mediaFormats, setMediaFormats] = React.useState<Array<number>>([]);
+
+  React.useEffect(() => {
+    props.loadCodeNumFn();
+  }, []);
 
   return (
     <>
@@ -63,14 +80,15 @@ const FormClient: React.FunctionComponent<{}> = () => {
       <Form
         className="form-clients"
         style={{ width: "100%" }}
-        // onFinish={(form) => {
-        //   props.loadFormClientAct(form as FormClientModel, props.opgPicture);
-        // }}
+        onFinish={(form) => {
+          props.submitFormMedia(form as FormMediaModel);
+        }}
         validateMessages={validateMessages}
         initialValues={{ codPhoneOpc: "1" }}
       >
         <Content>
           <MediaInfo />
+          <Segmentation />
           <MediaFormats
             onClosing={() => null}
             groupName="principalMediaFormat"
@@ -101,7 +119,6 @@ const FormClient: React.FunctionComponent<{}> = () => {
             Add Media Format
           </Button>
           <AudienceReach />
-          <Segmentation />
           <AdvanceStatistics />
           <DecisionMaker
             onClosing={() => null}
@@ -130,12 +147,17 @@ const FormClient: React.FunctionComponent<{}> = () => {
             <PlusOutlined />
             Add Decision Maker
           </Button>
+          <br />
+          <br />
+          <Form.Item style={{ textAlign: "center" }}>
+            <Button type="primary" htmlType="submit">
+              Save
+            </Button>
+          </Form.Item>
         </Content>
       </Form>
     </>
   );
 };
 
-// export default connector(FormClient);
-
-export default FormClient;
+export default connector(FormClient);

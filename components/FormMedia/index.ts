@@ -1,2 +1,2 @@
 export { FormMedia } from "./section";
-// export { FormClientReducer } from "./reducer";
+export { FormMediaReducer } from "./reducer";

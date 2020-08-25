@@ -1,170 +1,45 @@
 import {
-  SUBMIT_OPEN_GRAPH,
-  SUCCESS_OPEN_GRAPH,
-  FAIL_OPEN_GRAPH,
-  LOAD_CODE_NUMBERS,
-  SUBMIT_FIND_COUNTRY,
-  LOAD_FIND_COUNTRY,
-  SUBMIT_GENERAL_INFO,
-  LOAD_GENERAL_INFO,
-  ActionFormClient,
-  SUBMIT_FORM,
-  SUCCESS_FORM,
-  FAIL_FORM,
-  OpenGraphModel,
-  CodeNumberModel,
-  CountryModel,
-  GeneralCInfoModel,
-  FormClientModel,
+  SUBMIT_FORM_MEDIA,
+  SUCCESS_FORM_MEDIA,
+  FAIL_FORM_MEDIA,
+  FormMediaModel,
+  ActionFormMedia,
 } from "./type";
-
+import { SendFormMediaService } from "./service";
 import { getSession } from "../Login/storage";
-import {
-  OpenGraph,
-  loadCodeNumService,
-  loadCountryService,
-  loadGenCInfoService,
-  loadFormClientService,
-} from "./service";
 
-export type dispatchRegister = (_: ActionFormClient) => void;
+export type dispatchRegister = (_: ActionFormMedia) => void;
 
 /**
- * Open Graph
- * @param url
+ * SubmitForm
+ * @param form
  */
 
-export const submitOpenGraph = (url: string) => {
+export const loadFormMedia = (form: FormMediaModel) => {
   return (dispatch: dispatchRegister) => {
-    dispatch(submitOpG());
+    dispatch(submitFormMedia(form));
     const token = getSession();
     if (typeof token === "string") {
-      OpenGraph(url, token)
-        .then((data) => {
-          dispatch(successOpG(data));
-        })
-        .catch(() => {
-          dispatch(failOpG());
-        });
-    } else {
-      dispatch(failOpG());
-    }
-  };
-};
-
-const submitOpG = (): ActionFormClient => ({
-  type: SUBMIT_OPEN_GRAPH,
-});
-
-const successOpG = (data: OpenGraphModel): ActionFormClient => ({
-  type: SUCCESS_OPEN_GRAPH,
-  payload: data,
-});
-
-const failOpG = (): ActionFormClient => ({
-  type: FAIL_OPEN_GRAPH,
-});
-
-/**
- * Codes Numbers Phone
- */
-
-export const loadCodeNum = () => {
-  return (dispatch: dispatchRegister) => {
-    const token = getSession();
-    if (typeof token === "string") {
-      loadCodeNumService(token).then((data) => {
-        dispatch(loadCodeNumOk(data));
-      });
-    }
-  };
-};
-
-const loadCodeNumOk = (data: Array<CodeNumberModel>): ActionFormClient => ({
-  type: LOAD_CODE_NUMBERS,
-  payload: data,
-});
-
-/**
- * Counties Cities
- * @param find
- */
-
-export const loadCountry = (find: string) => {
-  return (dispatch: dispatchRegister) => {
-    dispatch(submitCountryFind());
-    const token = getSession();
-    if (typeof token === "string" && find.length >= 3) {
-      loadCountryService(find, token).then((data) => {
-        dispatch(loadCountryFind(data));
-      });
-    }
-  };
-};
-
-const submitCountryFind = (): ActionFormClient => ({
-  type: SUBMIT_FIND_COUNTRY,
-});
-
-const loadCountryFind = (data: Array<CountryModel>): ActionFormClient => ({
-  type: LOAD_FIND_COUNTRY,
-  payload: data,
-});
-
-/**
- * Data General Contacts Info
- */
-
-export const loadGenCInfo = () => {
-  return (dispatch: dispatchRegister) => {
-    dispatch(submitGenCInfo());
-    const token = getSession();
-    if (typeof token === "string") {
-      loadGenCInfoService(token).then((data) => {
-        dispatch(loadGenCInfoOk(data));
-      });
-    }
-  };
-};
-
-const submitGenCInfo = (): ActionFormClient => ({
-  type: SUBMIT_GENERAL_INFO,
-});
-
-const loadGenCInfoOk = (data: GeneralCInfoModel): ActionFormClient => ({
-  type: LOAD_GENERAL_INFO,
-  payload: data,
-});
-
-/**
- * Save Form
- */
-
-export const loadFormClient = (form: FormClientModel) => {
-  return (dispatch: dispatchRegister) => {
-    dispatch(submitFormClient(form));
-    const token = getSession();
-    if (typeof token === "string") {
-      loadFormClientService(form, token)
+      SendFormMediaService(form, token)
         .then(() => {
-          dispatch(successFormClient());
+          dispatch(successFormMedia());
         })
         .catch(() => {
-          dispatch(failFormClient());
+          dispatch(failFormMedia());
         });
     }
   };
 };
 
-const submitFormClient = (data: FormClientModel): ActionFormClient => ({
-  type: SUBMIT_FORM,
+const submitFormMedia = (data: FormMediaModel): ActionFormMedia => ({
+  type: SUBMIT_FORM_MEDIA,
   payload: data,
 });
 
-const successFormClient = (): ActionFormClient => ({
-  type: SUCCESS_FORM,
+const successFormMedia = (): ActionFormMedia => ({
+  type: SUCCESS_FORM_MEDIA,
 });
 
-const failFormClient = (): ActionFormClient => ({
-  type: FAIL_FORM,
+const failFormMedia = (): ActionFormMedia => ({
+  type: FAIL_FORM_MEDIA,
 });

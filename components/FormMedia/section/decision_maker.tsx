@@ -1,10 +1,8 @@
 import React from "react";
-
-// import { connect, ConnectedProps } from "react-redux";
+import { connect, ConnectedProps } from "react-redux";
 import { CloseSquareOutlined } from "@ant-design/icons";
 
-// import { RxStatusFormClient, CodeNumberModel } from "../type";
-
+import { RxStatusFormClient, CodeNumberModel } from "../../FormClient/type";
 import SimpleInputText from "../../FormClient/section/components/simple_input_text";
 import PhoneInput from "../../FormClient/section/components/phone_input";
 import SimpleSelect from "../../../components/FormClient/section/components/simple_select";
@@ -27,23 +25,23 @@ interface PropsParent {
   groupName?: string;
 }
 
-// interface PropsMapState {
-//   codeNum: Array<CodeNumberModel>;
-// }
+interface PropsMapState {
+  codeNum: Array<CodeNumberModel>;
+}
 
-// const mapState = (state: RxStatusFormClient): PropsMapState => {
-//   return {
-//     codeNum: state.FormClientReducer.codeNum,
-//   };
-// };
+const mapState = (state: RxStatusFormClient): PropsMapState => {
+  return {
+    codeNum: state.FormClientReducer.codeNum,
+  };
+};
 
-// const connector = connect(mapState);
+const connector = connect(mapState);
 
-// type PropsRedux = ConnectedProps<typeof connector>;
+type PropsRedux = ConnectedProps<typeof connector>;
 
-// type Props = PropsRedux & PropsParent;
+type Props = PropsRedux & PropsParent;
 
-const DecisionMaker: React.FunctionComponent<PropsParent> = (props) => {
+const DecisionMaker: React.FunctionComponent<Props> = (props) => {
   return (
     <>
       <Row>
@@ -71,8 +69,7 @@ const DecisionMaker: React.FunctionComponent<PropsParent> = (props) => {
           placeholder="Mobile phone"
           required={true}
           validator={validatePhoneNumber("Mobile phone")}
-          // data={props.codeNum}
-          data={[]}
+          data={props.codeNum}
         />
       </Row>
       <Row>
@@ -113,6 +110,4 @@ const DecisionMaker: React.FunctionComponent<PropsParent> = (props) => {
   );
 };
 
-// export default connector(DecisionMaker);
-
-export default DecisionMaker;
+export default connector(DecisionMaker);
